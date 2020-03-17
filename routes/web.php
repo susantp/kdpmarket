@@ -20,4 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('membership', 'Admin\MembershipController');
 // Route::get('/home', 'HomeController@index')->name('home');
