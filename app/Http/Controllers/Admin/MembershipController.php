@@ -42,8 +42,16 @@ class MembershipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+
+        ]);
+
+        Member::create($request->all());
+
+        return redirect()->route('membership.index')->with('success', 'Member created successfully.');
     }
+
 
     /**
      * Display the specified resource.
@@ -53,7 +61,8 @@ class MembershipController extends Controller
      */
     public function show($id)
     {
-        //
+        $member = Member::find($id);
+        return view('membership.show', compact('member'));
     }
 
     /**
@@ -64,7 +73,8 @@ class MembershipController extends Controller
      */
     public function edit($id)
     {
-        return view('membership.edit');
+        $member = Member::find($id);
+        return view('membership.edit', compact('member'));
     }
 
     /**
@@ -76,7 +86,14 @@ class MembershipController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        $member = Member::find($id);
+        $member->update($request->all());
+
+        return redirect()->route('membership.index')
+            ->with('success', 'Member updated successfully');
     }
 
     /**
@@ -87,6 +104,10 @@ class MembershipController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $member = Member::find($id);
+        $member->delete();
+
+        return redirect()->route('membership.index')
+            ->with('success', 'Member deleted successfully');
     }
 }
