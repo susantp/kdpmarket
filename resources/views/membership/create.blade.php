@@ -70,7 +70,7 @@
             </label>
             <label>
                 <p class="label-txt">ENTER YOUR Deposit Date</p>
-                <input type="text" class="input" name="deposit_date" id="deposit_date" placeholder="Deposit Date">
+                <input type="date" class="input" name="deposit_date" id="deposit_date" placeholder="Deposit Date">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>

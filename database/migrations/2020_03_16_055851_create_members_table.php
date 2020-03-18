@@ -19,10 +19,10 @@ class CreateMembersTable extends Migration
             $table->string('name');
             $table->string('phone')->nullable();
             $table->string('email');
-            $table->string('rrn');
+            $table->string('rrn')->nullable();
             $table->string('deposit_name')->nullable();
             $table->date('deposit_date')->nullable();
-            $table->date('voucher_no')->nullable();
+            $table->string('voucher_no')->nullable();
             $table->string('account_owner')->nullable();
             $table->string('bank_name')->nullable();
             $table->string('account_number')->nullable();
