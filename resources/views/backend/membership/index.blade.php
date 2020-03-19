@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <!-- Content Row -->
     <div class="row">
-        <div class="col-lg-10">
+        <div class="col-lg-12">
             <!-- Grayscale Utilities -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -14,24 +14,26 @@
                     <div class="">
                         <a class="btn btn-success" href="{{ route('membership.create') }}"> Add New Member</a>
                     </div>
-                    <table class="table table-bordered table-striped table-responsive">
+
+
+                    <table class="table table-bordered table-responsive dataTable">
                         <tr>
                             <td>SN</td>
                             <td>ID</td>
                             <td>Name</td>
                             <td>Phone</td>
-                            <td>E-Mail</td>
-                            <td>Deposit Name</td>
-                            <td>Deposit Date/Time</td>
-                            <td>Voucher No</td>
-                            <td>Account Owner</td>
+                            <td>Mail</td>
+                            <td>D Name</td>
+                            <td>D Date/Time</td>
+                            <td>V No</td>
+                            <td>Acc Owner</td>
                             <td>RRN</td>
                             <td>Bank Name</td>
-                            <td>Account Number</td>
-                            <td>Recruiter ID</td>
-                            <td>Recruiter Name</td>
-                            <td>Sponsor ID</td>
-                            <td>Sponsor Name</td>
+                            <td>Acc Number</td>
+                            <td>Rec ID</td>
+                            <td>Rec Name</td>
+                            <td>Spo ID</td>
+                            <td>Spo Name</td>
                             <td>Center Name</td>
                             <td>Center Phone</td>
                             {{-- <td>Center Qualify</td> --}}
@@ -99,4 +101,5 @@
 
 
     </div>
-</div> @endsection
+</div>
+@endsection
