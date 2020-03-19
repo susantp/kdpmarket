@@ -39,7 +39,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="registration.html">
+        <a class="nav-link" href="{{route('membership.index')}}">
             <i class="fas fa-fw fa-wrench"></i>
             <span>Registration</span>
         </a>

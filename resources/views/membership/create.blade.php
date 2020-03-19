@@ -115,7 +115,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <label for="rRID" class="labelHighlight">Recruiter ID</label>
-                                        <input type="text" class="form-control" name="recuriter_id" id="recuriter_id"
+                                        <input type="text" class="form-control" name="recruiter_id" id="recruiter_id"
                                             aria-describedby="rRID" placeholder="모집인 ID">
                                     </div>
                                 </div>
