@@ -110,10 +110,22 @@ class MembershipController extends Controller
             ->with('success', 'Member deleted successfully');
     }
 
+    public function changeInfo()
+    {
+        $userIds = Member::select('userID')->get();
+        // echo "<pre>";
+        // print_r($userIds);
+        // die;
+        return view('backend.membership.changeInfo')->with('userIds', $userIds);
+    }
     public function checkRecruiterInfo(Request $request)
     {
         $info = $request->all();
         $member = Member::select('name')->where('userID', $info['id'])->get();
         return response()->json(['success' => 'Got the Request', 'data' => $member]);
+    }
+
+    public function getAllUserID(Request $request)
+    {
     }
 }
