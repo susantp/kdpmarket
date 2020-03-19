@@ -109,4 +109,12 @@ class MembershipController extends Controller
         return redirect()->route('backend.membership.index')
             ->with('success', 'Member deleted successfully');
     }
+
+    public function checkRecruiterInfo(Request $request)
+    {
+        $info = $request->all();
+        $member = Member::select('name')->where('userID', $info['id'])->get();
+        print_r($member);
+        return response()->json(['success' => 'Got the Request',]);
+    }
 }
