@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{route('membership.index')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -31,7 +31,7 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="change.html">Change Information</a>
+                <a class="collapse-item" href="{{route('changeInfo')}}">Change Information</a>
                 <a class="collapse-item" href="forgot-password.html">Change Password</a>
             </div>
         </div>
@@ -39,7 +39,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="{{route('membership.index')}}">
+        <a class="nav-link" href="{{route('membership.create')}}">
             <i class="fas fa-fw fa-wrench"></i>
             <span>Registration</span>
         </a>
