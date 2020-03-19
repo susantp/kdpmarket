@@ -203,4 +203,29 @@
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function(){
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+        $('#rCheckID').click(function(){
+
+            alert('chcek recruiter button is pressed');
+            var recruiter_id = $('#recruiter_id').val();
+            alert(recruiter_id);
+
+            $.ajax({
+                type: "post",
+                url: "{{route('checkRecruiterInfo')}}",
+                data: {id: recruiter_id},
+                success: function (data) {
+                    alert(data.success);
+                }
+            });
+        });
+    });
+</script>
 @endsection
