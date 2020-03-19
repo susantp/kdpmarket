@@ -1,12 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.backend.app')
 @section('content')
-
-
-@include('layouts.navmenu')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add New Member</h2>
+            <h2>Edit Member</h2>
         </div>
         <div class="float-right">
             <a class="btn btn-primary" href="{{ route('membership.index') }}"> Back</a>
@@ -31,7 +28,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Member Registration 등록화면 설명</h6>
             </div>
             <div class="card-body">
-                <form class="memberRegistration" action="{{ route('membership.update') }}" method="POST">
+                <form class="memberRegistration" action="{{url("/membership/$member->id")}}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -136,7 +133,7 @@
                             <div class="form-group">
                                 <label for="rRecruiterName">Recruiter Name</label>
                                 <input type="text" class="form-control" value="{{$member->recruiter_name}}"
-                                    name="recuriter_name" id="recuriter_name" aria-describedby="rRecruiterName"
+                                    name="recruiter_name" id="recuriter_name" aria-describedby="rRecruiterName"
                                     placeholder="모집인 이름">
                             </div>
                         </div>
@@ -215,4 +212,42 @@
     </div>
 
 </div>
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+        $('#rCheckID').click(function(){
+            var recruiter_id = $('#recruiter_id').val();
+            $.ajax({
+                type: "post",
+                url: "{{route('checkRecruiterInfo')}}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    id: recruiter_id},
+                success: function (data) {
+                    console.log(data.data[0].name);
+                  $('#recuriter_name').val(data.data[0].name);
+                }
+            });
+        });
+
+        $('#rSponsorCheckID').click(function(){
+        var sponsor_id = $('#sponsor_id').val();
+        $.ajax({
+        type: "post",
+        url: "{{route('checkRecruiterInfo')}}",
+        data: {
+        "_token": "{{ csrf_token() }}",
+        id: sponsor_id},
+        success: function (data) {
+        console.log(data.data[0].name);
+        $('#sponsor_name').val(data.data[0].name);
+        }
+        });
+        });
+    });
+</script>
 @endsection

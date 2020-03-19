@@ -49,7 +49,7 @@ class MembershipController extends Controller
 
         Member::create($request->all());
 
-        return redirect()->route('backend.membership.index')->with('success', 'Member created successfully.');
+        return redirect()->route('membership.index')->with('success', 'Member created successfully.');
     }
 
     /**
@@ -89,9 +89,10 @@ class MembershipController extends Controller
             'name' => 'required',
         ]);
         $member = Member::find($id);
+
         $member->update($request->all());
 
-        return redirect()->route('backend.membership.index')
+        return redirect()->route('membership.index')
             ->with('success', 'Member updated successfully');
     }
 
@@ -106,13 +107,13 @@ class MembershipController extends Controller
         $member = Member::find($id);
         $member->delete();
 
-        return redirect()->route('backend.membership.index')
+        return redirect()->route('membership.index')
             ->with('success', 'Member deleted successfully');
     }
 
     public function changeInfo()
     {
-        $userIds = Member::select('userID')->get();
+        $userIds = Member::select('userID', 'id')->get();
         // echo "<pre>";
         // print_r($userIds);
         // die;
