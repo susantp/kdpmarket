@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.backend.app')
 @section('content')
-<div class="container">
+
+<div class="container-fluid">
+    <!-- Content Row -->
     <div class="row">
         <div class="pull-right">
             <a class="btn btn-success" href="{{ route('membership.create') }}"> Add New Member</a>
@@ -82,149 +84,12 @@
             </tr>
 
             @endforeach
-            {{-- <tr>
-                <td>1</td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-                <td>lorem ipsum Lorem ipsum dolor sit, amet
-                </td>
-            </tr> --}}
         </table>
     </div>
-
 </div>
+
+
+
+
 
 @endsection
