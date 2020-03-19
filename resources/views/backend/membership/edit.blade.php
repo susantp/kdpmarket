@@ -31,8 +31,9 @@
                 <h6 class="m-0 font-weight-bold text-primary">Member Registration 등록화면 설명</h6>
             </div>
             <div class="card-body">
-                <form class="memberRegistration" action="{{ route('membership.store') }}" method="POST">
+                <form class="memberRegistration" action="{{ route('membership.update') }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">

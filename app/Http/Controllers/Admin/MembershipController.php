@@ -115,6 +115,6 @@ class MembershipController extends Controller
         $info = $request->all();
         $member = Member::select('name')->where('userID', $info['id'])->get();
         print_r($member);
-        return response()->json(['success' => 'Got the Request']);
+        return response()->json(['success' => 'Got the Request',]);
     }
 }
