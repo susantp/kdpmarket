@@ -24,5 +24,5 @@ Route::resource('membership', 'Admin\MembershipController');
 Route::post('checkRecruiterAjax', 'Admin\MembershipController@checkRecruiterInfo')->name('checkRecruiterInfo');
 
 //page route
-Route::get('/home', '\Pages\PageController@index')->name('home');
+Route::get('/home', 'Pages\PageController@index')->name('home');
 // Route::get('/home', 'HomeController@index')->name('home');
