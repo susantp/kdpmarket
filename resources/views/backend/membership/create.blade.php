@@ -188,8 +188,25 @@
 
 <script>
     $(document).ready(function () {
-        $('#recruiter_id').click(function(){
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+        $('#rCheckID').click(function(){
+            alert('cliuck');
             var recruiter_id = $('#recruiter_id').val();
+            $.ajax({
+                type: "post",
+                url: "{{route('checkRecruiterInfo')}}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    id: recruiter_id},
+                success: function (data) {
+                    console.log(data.data[0].name);
+                  $('#recuriter_name').val(data.data[0].name);
+                }
+            });
         })
     });
 </script>
