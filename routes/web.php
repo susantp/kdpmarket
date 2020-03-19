@@ -26,3 +26,9 @@ Route::post('checkRecruiterAjax', 'Admin\MembershipController@checkRecruiterInfo
 //page route
 Route::get('/home', 'Pages\PageController@index')->name('home');
 // Route::get('/home', 'HomeController@index')->name('home');
+Route::get(
+    'checkforgot',
+    function () {
+        return view('cauth.changepassword');
+    }
+);
