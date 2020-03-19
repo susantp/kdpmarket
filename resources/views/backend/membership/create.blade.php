@@ -126,7 +126,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="rCheckID">Check ID</label>
-                                        <button type="button" class="btn btn-info" id="rCheckID">Check</button>
+                                        <button type="button" class="btn btn-info" id="rSponsorCheckID">Check</button>
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +194,6 @@
         }
         });
         $('#rCheckID').click(function(){
-            alert('cliuck');
             var recruiter_id = $('#recruiter_id').val();
             $.ajax({
                 type: "post",
@@ -207,7 +206,22 @@
                   $('#recuriter_name').val(data.data[0].name);
                 }
             });
-        })
+        });
+
+        $('#rSponsorCheckID').click(function(){
+        var sponsor_id = $('#sponsor_id').val();
+        $.ajax({
+        type: "post",
+        url: "{{route('checkRecruiterInfo')}}",
+        data: {
+        "_token": "{{ csrf_token() }}",
+        id: sponsor_id},
+        success: function (data) {
+        console.log(data.data[0].name);
+        $('#sponsor_name').val(data.data[0].name);
+        }
+        });
+        });
     });
 </script>
 @endsection
