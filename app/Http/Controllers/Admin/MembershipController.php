@@ -21,7 +21,7 @@ class MembershipController extends Controller
     public function index()
     {
         $members = Member::all();
-        return view('membership.index')->with('members', $members);
+        return view('backend.membership.index')->with('members', $members);
     }
 
     /**
@@ -31,7 +31,7 @@ class MembershipController extends Controller
      */
     public function create()
     {
-        return view('membership.create');
+        return view('backend.membership.create');
     }
 
     /**
@@ -49,9 +49,8 @@ class MembershipController extends Controller
 
         Member::create($request->all());
 
-        return redirect()->route('membership.index')->with('success', 'Member created successfully.');
+        return redirect()->route('backend.membership.index')->with('success', 'Member created successfully.');
     }
-
 
     /**
      * Display the specified resource.
@@ -62,7 +61,7 @@ class MembershipController extends Controller
     public function show($id)
     {
         $member = Member::find($id);
-        return view('membership.show', compact('member'));
+        return view('backend.membership.show', compact('member'));
     }
 
     /**
@@ -74,7 +73,7 @@ class MembershipController extends Controller
     public function edit($id)
     {
         $member = Member::find($id);
-        return view('membership.edit', compact('member'));
+        return view('backend.membership.edit', compact('member'));
     }
 
     /**
@@ -92,7 +91,7 @@ class MembershipController extends Controller
         $member = Member::find($id);
         $member->update($request->all());
 
-        return redirect()->route('membership.index')
+        return redirect()->route('backend.membership.index')
             ->with('success', 'Member updated successfully');
     }
 
@@ -107,7 +106,7 @@ class MembershipController extends Controller
         $member = Member::find($id);
         $member->delete();
 
-        return redirect()->route('membership.index')
+        return redirect()->route('backend.membership.index')
             ->with('success', 'Member deleted successfully');
     }
 }
