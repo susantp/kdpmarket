@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Member;
+use App\User;
 use Illuminate\Http\Request;
 
 class MembershipController extends Controller
@@ -127,5 +128,18 @@ class MembershipController extends Controller
 
     public function getAllUserID(Request $request)
     {
+    }
+
+    public function checkPassword(Request $request)
+    {
+        //"curpwd":"adsf","pwd":"asdf","conpwd":"asdf"
+        // $currentpassword = User::find(Auth::id());
+        // return strcmp(bcrypt($request->curpwd), $currentpassword->password);
+        $user = User::find(1);
+        $user->password = bcrypt($request->pwd);
+        $response = $user->save();
+        if ($response > 0) {
+            return view('cauth.changepassword', ['msg' => 'Password Change Successfully']);
+        }
     }
 }

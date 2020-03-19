@@ -32,7 +32,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('changeInfo')}}">Change Information</a>
-                <a class="collapse-item" href="forgot-password.html">Change Password</a>
+                <a class="collapse-item" href="{{route('changepassword')}}">Change Password</a>
             </div>
         </div>
     </li>
@@ -55,7 +55,7 @@
     </li>
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="sponsor.html">
+        <a class="nav-link" href="{{route('sponsors')}}">
             <i class="fas fa-fw fa-folder"></i>
             <span>Sponsor Chart</span>
         </a>
