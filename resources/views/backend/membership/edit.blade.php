@@ -149,7 +149,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="rCheckID">Check ID</label>
-                                    <button type="button" class="btn btn-info" id="rCheckID">Check</button>
+                                    <button type="button" class="btn btn-info" id="rSponsorCheckID">Check</button>
                                 </div>
                             </div>
                         </div>
@@ -234,6 +234,11 @@
             });
         });
 
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
         $('#rSponsorCheckID').click(function(){
         var sponsor_id = $('#sponsor_id').val();
         $.ajax({
