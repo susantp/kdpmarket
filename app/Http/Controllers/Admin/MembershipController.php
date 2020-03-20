@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Member;
 use App\User;
+use App\SponsorRecruiter;
 use Illuminate\Http\Request;
 
 class MembershipController extends Controller
@@ -50,6 +51,13 @@ class MembershipController extends Controller
 
         Member::create($request->all());
 
+        if ($request->sponsor_id || $request->recruiter_id) {
+            $sponsorRecruiter = new SponsorRecruiter();
+            $sponsorRecruiter->userID = $request->userID;
+            $sponsorRecruiter->sponsor_id = $request->sponsor_id;
+            $sponsorRecruiter->recruiter_id = $request->recruiter_id;
+            $sponsorRecruiter->save();
+        }
         return redirect()->route('membership.index')->with('success', 'Member created successfully.');
     }
 
@@ -130,6 +138,7 @@ class MembershipController extends Controller
     public function getAllUserID(Request $request)
     {
     }
+<<<<<<< HEAD
 
     public function checkPassword(Request $request)
     {
@@ -144,3 +153,6 @@ class MembershipController extends Controller
         }
     }
 }
+=======
+}
+>>>>>>> 3b54cb59caaf5f97bb4e6400519f1fd32959b6e9
