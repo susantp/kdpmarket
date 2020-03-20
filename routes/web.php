@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Admin\MembershipController@index');
+
 
 Auth::routes();
 
@@ -23,7 +22,9 @@ Auth::routes();
 Route::resource('membership', 'Admin\MembershipController');
 Route::get('changeInfo', 'Admin\MembershipController@changeInfo')->name('changeInfo');
 Route::post('checkRecruiterAjax', 'Admin\MembershipController@checkRecruiterInfo')->name('checkRecruiterInfo');
-
+Route::get('sponsor', function(){
+    return view('backend.chart');
+})->name('sponsorchart');
 //page route
 Route::get('/home', 'Pages\PageController@index')->name('home');
 // Route::get('/home', 'HomeController@index')->name('home');
