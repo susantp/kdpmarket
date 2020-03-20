@@ -1,16 +1,6 @@
 @extends('layouts.backend.app')
 @section('content')
 <div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Edit Member</h2>
-        </div>
-        <div class="float-right">
-            <a class="btn btn-primary" href="{{ route('membership.index') }}"> Back</a>
-        </div>
-    </div>
-</div>
-<div class="row">
     @if ($errors->any())
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
