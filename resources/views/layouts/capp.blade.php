@@ -12,14 +12,14 @@
     <title>KDP Project</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{asset('storage/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{asset('storage/css/kdb-admin.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('storage/css/style.css')}}">
+    <link href="{{asset('css/kdb-admin.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 </head>
 
@@ -34,14 +34,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('storage/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('storage/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{asset('storage/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{asset('storage/js/kdb-admin.min.js')}}"></script>
+    <script src="{{asset('js/kdb-admin.min.js')}}"></script>
 
 </body>
 

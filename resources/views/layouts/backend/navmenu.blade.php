@@ -55,7 +55,7 @@
     </li>
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="{{route('sponsors')}}">
+        <a class="nav-link" href="{{route('sponsorchart')}}">
             <i class="fas fa-fw fa-folder"></i>
             <span>Sponsor Chart</span>
         </a>

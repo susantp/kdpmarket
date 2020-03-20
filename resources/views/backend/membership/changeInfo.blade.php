@@ -23,7 +23,7 @@
                                     <select name="newuserID" id="newuserID" class="form-control">
                                         <option value="">select</option>
                                         @foreach ($userIds as $userId)
-                                        <option value="{{$userId->userID}}">{{$userId->userID}}</option>
+                                        <option value="{{$userId->id}}">{{$userId->userID}}</option>
                                         @endforeach
                                     </select>
                                     {{-- <input type="text" class="form-control" name="userID" id="userID"
@@ -194,27 +194,14 @@
 
 <script>
     $(document).ready(function () {
-        $.ajaxSetup({
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-        // $('#rCheckID').click(function(){
-        //     var recruiter_id = $('#recruiter_id').val();
-        //     $.ajax({
-        //         type: "post",
-        //         url: "{{route('checkRecruiterInfo')}}",
-        //         data: {
-        //             "_token": "{{ csrf_token() }}",
-        //             id: recruiter_id},
-        //         success: function (data) {
-        //             console.log(data.data[0].name);
-        //           $('#recuriter_name').val(data.data[0].name);
-        //         }
-        //     });
-        // });
-
-
+            $('#newuserID').change(function(e){
+                e.preventDefault();
+                var userId = $('#newuserID').val();
+                alert(userId);
+                // if (userId) {
+                // }
+                // window.location.assign(EditPostUri);
+            });
 
     });
 </script>

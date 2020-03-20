@@ -90,6 +90,7 @@ class MembershipController extends Controller
             'name' => 'required',
         ]);
         $member = Member::find($id);
+
         $member->update($request->all());
 
         return redirect()->route('membership.index')
@@ -113,7 +114,7 @@ class MembershipController extends Controller
 
     public function changeInfo()
     {
-        $userIds = Member::select('userID')->get();
+        $userIds = Member::select('userID', 'id')->get();
         // echo "<pre>";
         // print_r($userIds);
         // die;
