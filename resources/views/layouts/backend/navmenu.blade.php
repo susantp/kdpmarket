@@ -15,7 +15,7 @@
     <li class="nav-item active">
         <a class="nav-link" href="{{route('membership.index')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Member List</span></a>
     </li>
 
     <!-- Divider -->
