@@ -102,6 +102,14 @@ class MembershipController extends Controller
 
         $member->update($request->all());
 
+        if ($request->sponsor_id || $request->recruiter_id) {
+            $sponsorRecruiter = new SponsorRecruiter();
+            $sponsorRecruiter->userID = $request->userID;
+            $sponsorRecruiter->sponsor_id = $request->sponsor_id;
+            $sponsorRecruiter->recruiter_id = $request->recruiter_id;
+            $sponsorRecruiter->save();
+        }
+
         return redirect()->route('membership.index')
             ->with('success', 'Member updated successfully');
     }
