@@ -218,28 +218,38 @@
                     "_token": "{{ csrf_token() }}",
                     id: recruiter_id},
                 success: function (data) {
-                    console.log(data.data[0].name);
-                  $('#recuriter_name').val(data.data[0].name);
+                    // console.log(data);
+                    if(data.count>=2) {
+                        alert("Limit Reached !");
+                    }else{
+                        $('#recuriter_name').val(data.data[0].name);
+                    }
                 }
             });
         });
 
         $.ajaxSetup({
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
         $('#rSponsorCheckID').click(function(){
         var sponsor_id = $('#sponsor_id').val();
         $.ajax({
-        type: "post",
-        url: "{{route('checkRecruiterInfo')}}",
-        data: {
-        "_token": "{{ csrf_token() }}",
-        id: sponsor_id},
-        success: function (data) {
-        console.log(data.data[0].name);
-        $('#sponsor_name').val(data.data[0].name);
+            type: "post",
+            url: "{{route('checkRecruiterInfo')}}",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                id: sponsor_id
+                },
+            success: function (data) {
+                // console.log(data.data[0].name);
+                if(data.count>=2) {
+                alert("Limit Reached !");
+                }else{
+                $('#sponsor_name').val(data.data[0].name);
+                }
+        
         }
         });
         });
