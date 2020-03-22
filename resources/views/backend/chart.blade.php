@@ -56,7 +56,7 @@ OrgChart.templates.ana.field_1 = '<text class="field_1" style="font-size: 40px;"
 var chart = new OrgChart(document.getElementById("chart_div"), {
     template: "ana",
     collapse: {
-        level: 3
+        level: 6
     },
     nodeBinding: {
         field_0: "name",
