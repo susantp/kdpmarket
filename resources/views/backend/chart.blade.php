@@ -11,54 +11,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Recruiting Chart</h6>
                 </div>
                 <div class="card-body">
-                    {{-- <div class="row">
-                        <form
-                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small"
-                                    placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div> --}}
-                    <!-- end of organigazion search -->
-                    <hr>
-
-
-                    {{-- google waalaa chart --}}
-
                     <div id="chart_div"></div>
-
-                    <!-- sponsor tree -->
-
-                    {{-- <div class="tf-tree tf-gap-lg">
-                        <ul>
-                            <li>
-                                <span class="tf-nc">1</span>
-                                <ul>
-                                    <li>
-                                        <span class="tf-nc">2</span>
-                                        <ul>
-                                            <li><span class="tf-nc">4</span></li>
-                                            <li><span class="tf-nc">5</span></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span class="tf-nc">3</span>
-                                        <ul>
-                                            <li><span class="tf-nc">6</span></li>
-                                            <li><span class="tf-nc">7</span></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div> --}}
-                    <!-- tree ends -->
                 </div>
             </div>
         </div>
@@ -98,11 +51,11 @@ childCount(id) {
     }
     return count;
 }
-// OrgChart.templates.rony.field_number_children = '<circle cx="60" cy="110" r="15" fill="#F57C00"></circle><text fill="#ffffff" x="60" y="115" text-anchor="middle">{val}</text>';
+OrgChart.templates.rony.node = '<circle cx="90" cy="130" r="90" fill="#253d6e"></circle>';
 var chart = new OrgChart(document.getElementById("chart_div"), {
     template: "rony",
     collapse: {
-        level: 3
+        level: 6
     },
     nodeBinding: {
         field_0: "name",
