@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Member;
-use App\User;
 use App\SponsorRecruiter;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MembershipController extends Controller
 {
@@ -132,20 +133,25 @@ class MembershipController extends Controller
     {
         $info = $request->all();
         $member = Member::select('name')->where('userID', $info['id'])->get();
-        return response()->json(['success' => 'Got the Request', 'data' => $member]);
+        $checkrepeatation = SponsorRecruiter::where('recruiter_id', '=', $info['id'])->get();
+        $row_count = $checkrepeatation->count();
+        return response()->json(['success' => 'Got the Request', 'data' => $member, 'count' => $row_count]);
+
+        // return response()->json(['success' => 'Got the Request', 'data' => $member]);
     }
 
     public function getAllUserID(Request $request)
     {
+
     }
-<<<<<<< HEAD
 
     public function checkPassword(Request $request)
     {
         //"curpwd":"adsf","pwd":"asdf","conpwd":"asdf"
         // $currentpassword = User::find(Auth::id());
         // return strcmp(bcrypt($request->curpwd), $currentpassword->password);
-        $user = User::find(1);
+        return Auth::id();
+        $user = User::find(Auth::id());
         $user->password = bcrypt($request->pwd);
         $response = $user->save();
         if ($response > 0) {
@@ -153,6 +159,3 @@ class MembershipController extends Controller
         }
     }
 }
-=======
-}
->>>>>>> 3b54cb59caaf5f97bb4e6400519f1fd32959b6e9

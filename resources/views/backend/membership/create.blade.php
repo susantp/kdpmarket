@@ -68,7 +68,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="rAowner">Account Owner</label>
-                                    <input type="text" class="form-control" iname="account_owner" id="account_owner"
+                                    <input type="text" class="form-control" name="account_owner" id="account_owner"
                                         aria-describedby="rAowner" placeholder="예금주 이름">
                                 </div>
                             </div>
@@ -202,8 +202,12 @@
                     "_token": "{{ csrf_token() }}",
                     id: recruiter_id},
                 success: function (data) {
-                    console.log(data.data[0].name);
-                  $('#recuriter_name').val(data.data[0].name);
+                    // console.log(data);
+                    if(data.count>=2) {
+                    alert("Limit Reached !");
+                    }else{
+                    $('#recuriter_name').val(data.data[0].name);
+                    }
                 }
             });
         });
@@ -217,8 +221,11 @@
         "_token": "{{ csrf_token() }}",
         id: sponsor_id},
         success: function (data) {
-        console.log(data.data[0].name);
+        if(data.count>=2) {
+        alert("Limit Reached !");
+        }else{
         $('#sponsor_name').val(data.data[0].name);
+        }
         }
         });
         });
