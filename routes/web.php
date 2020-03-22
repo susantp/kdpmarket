@@ -29,8 +29,13 @@ Route::get('sponsor', function(){
 Route::get('/home', 'Pages\PageController@index')->name('home');
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get(
-    'checkforgot',
+    'changepassword',
     function () {
         return view('cauth.changepassword');
     }
-);
+)->name('changepassword');
+
+Route::post('dochangepassword', 'Admin\MembershipController@checkPassword')->name('dochangepassword');
+Route::get('sponsors', function () {
+    return view('backend.chart');
+})->name('sponsors');
