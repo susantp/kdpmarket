@@ -35,22 +35,22 @@
                 },
                 success: function (data) {
                     var nodes = data;
-                            for (var i = 0; i < nodes.length; i++) {
-    nodes[i].field_number_children = childCount(nodes[i].id);
-}
+//                             for (var i = 0; i < nodes.length; i++) {
+//                             nodes[i].field_number_children = childCount(nodes[i].id);
+//                         }
 
-function
-childCount(id) {
-    let count = 0;
-    for (var i = 0; i < nodes.length; i++) {
-        if (nodes[i].pid == id) {
-            count++;
-            count
-                += childCount(nodes[i].id);
-        }
-    }
-    return count;
-}
+// function
+// childCount(id) {
+//     let count = 0;
+//     for (var i = 0; i < nodes.length; i++) {
+//         if (nodes[i].pid == id) {
+//             count++;
+//             count
+//                 += childCount(nodes[i].id);
+//         }
+//     }
+//     return count;
+// }
 // OrgChart.templates.rony.field_number_children = '<circle cx="60" cy="110" r="15" fill="#F57C00"></circle><text fill="#ffffff" x="60" y="115" text-anchor="middle">{val}</text>';
 OrgChart.templates.ana.field_1 = '<text class="field_1" style="font-size: 40px;" fill="#fff" x="125" y="70" text-anchor="middle">{val}</text>';
 var chart = new OrgChart(document.getElementById("chart_div"), {
