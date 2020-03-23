@@ -229,6 +229,27 @@
         }
         });
         });
+
+        $('#userID').on('input',function(e){
+            e.preventDefault();
+            var userIdToCheck = $('#userID').val();
+            alert(userIdToCheck);
+            $.ajax({
+                type: "post",
+                url: "{{route('checkUserID')}}",
+                data: {
+                "_token": "{{ csrf_token() }}",
+                userID: userIdToCheck},
+                success: function (response) {
+                    console.log(response);                    
+                }
+            });
+        })
+
+
     });
+
+
+
 </script>
 @endsection

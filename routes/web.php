@@ -21,7 +21,8 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('membership', 'Admin\MembershipController');
 Route::get('changeInfo', 'Admin\MembershipController@changeInfo')->name('changeInfo');
-Route::post('checkRecruiterAjax', 'Admin\MembershipController@checkRecruiterInfo')->name('checkRecruiterInfo');
+Route::get('checkUserID','Admin\MembershipController@checkUserID')->name('checkUserID');
+Route::get('checkRecruiterAjax', 'Admin\MembershipController@checkRecruiterInfo')->name('checkRecruiterInfo');
 Route::get('sponsor', function () {
     return view('backend.chart');
 })->name('sponsorchart');
