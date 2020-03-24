@@ -114,7 +114,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="rCheckID">Check ID</label>
+                                    <label for="rCheckID"></label>
                                     <button type="button" class="btn btn-info" id="rCheckID">Check</button>
                                 </div>
                             </div>
@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="rCheckID">Check ID</label>
+                                    <label for="rCheckID"></label>
                                     <button type="button" class="btn btn-info" id="rSponsorCheckID">Check</button>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="rCheckID">Check</label>
+                                    <label for="rCheckID"></label>
                                     <button type="button" class="btn btn-info" id="rCheckID">Check</button>
                                 </div>
                             </div>
@@ -219,11 +219,9 @@
                     id: recruiter_id},
                 success: function (data) {
                     // console.log(data);
-                    if(data.count>=2) {
-                        alert("Limit Reached !");
-                    }else{
+                    
                         $('#recuriter_name').val(data.data[0].name);
-                    }
+                    
                 }
             });
         });
@@ -243,7 +241,8 @@
                 id: sponsor_id
                 },
             success: function (data) {
-                // console.log(data.data[0].name);
+                
+                console.log(data.data[0].name);
                 if(data.count>=2) {
                 alert("Limit Reached !");
                 }else{

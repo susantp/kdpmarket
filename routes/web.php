@@ -2,6 +2,7 @@
 
 use App\SponsorRecruiter;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,8 +40,10 @@ Route::get('sponsors', function () {
     return view('backend.chart');
 })->name('sponsors');
 
-Route::get('chartdata', function () {
-    $collections = SponsorRecruiter::all();
+/** Route::get('chartdata', function () {
+    $collections = DB::table('members')->select('userID','sponsor_id', 'recruiter_id')->get();
+    // $collections = SponsorRecruiter::all();
+    // return $collections;
     $newcol = array_map(function ($collection) {
         return array(
             'pid' => $collection['sponsor_id'],
@@ -57,5 +60,29 @@ Route::get('chartdata', function () {
     // }
     // return $collections;
     return response()->json($newcol);
+
+})->name('chartdata'); **/
+
+Route::get('chartdata', function () {
+
+$collections = App\Member::select('userID', 'sponsor_id','recruiter_id')->get();
+
+$newcol = array_map(function ($collection) {
+return array(
+'pid' => $collection['sponsor_id'],
+'id' => $collection['userID'],
+'title' => $collection['userID'],
+);
+}, $collections->toArray());
+
+return $newcol;
+// $filtered = [];
+// for ($i = 0; $i < count($collections); $i++) {
+
+// array_push($filtered, $collections[$i]->only(['id', 'userID', 'sponsor_id']));
+
+// }
+// return $collections;
+return response()->json($newcol);
 
 })->name('chartdata');

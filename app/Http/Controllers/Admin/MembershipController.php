@@ -51,14 +51,6 @@ class MembershipController extends Controller
         ]);
 
         Member::create($request->all());
-
-        if ($request->sponsor_id || $request->recruiter_id) {
-            $sponsorRecruiter = new SponsorRecruiter();
-            $sponsorRecruiter->userID = $request->userID;
-            $sponsorRecruiter->sponsor_id = $request->sponsor_id;
-            $sponsorRecruiter->recruiter_id = $request->recruiter_id;
-            $sponsorRecruiter->save();
-        }
         return redirect()->route('membership.index')->with('success', 'Member created successfully.');
     }
 
@@ -95,20 +87,12 @@ class MembershipController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+     $request->validate([
             'name' => 'required',
         ]);
         $member = Member::find($id);
 
         $member->update($request->all());
-
-        if ($request->sponsor_id || $request->recruiter_id) {
-            $sponsorRecruiter = new SponsorRecruiter();
-            $sponsorRecruiter->userID = $request->userID;
-            $sponsorRecruiter->sponsor_id = $request->sponsor_id;
-            $sponsorRecruiter->recruiter_id = $request->recruiter_id;
-            $sponsorRecruiter->save();
-        }
 
         return redirect()->route('membership.index')
             ->with('success', 'Member updated successfully');
@@ -141,7 +125,7 @@ class MembershipController extends Controller
     {
         $info = $request->all();
         $member = Member::select('name')->where('userID', $info['id'])->get();
-        $checkrepeatation = SponsorRecruiter::where('recruiter_id', '=', $info['id'])->get();
+        $checkrepeatation = Member::where('sponsor_id', '=', $info['id'])->get();
         $row_count = $checkrepeatation->count();
         return response()->json(['success' => 'Got the Request', 'data' => $member, 'count' => $row_count]);
 
