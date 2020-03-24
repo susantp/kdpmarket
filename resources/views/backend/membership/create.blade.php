@@ -173,20 +173,27 @@
                                 <br><br>
                                 <div class="form-row">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio1" form-check-label" for="inlineRadio1">Yes</label>
+                                        <input class="form-check-input" type="radio" name="center_qualify"
+                                            id="inlineRadio1" form-check-label" for="inlineRadio1" value="yes">Yes</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio2" form-check-label" for="inlineRadio2">No</label>
+                                        <input class="form-check-input" type="radio" name="center_qualify"
+                                            id="inlineRadio2" form-check-label" for="inlineRadio2" value="no">No</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="firstPasswordLogin">1st Password Login</label>
-                                    <input type="text" class="form-control" name="center_phone" id="center_phone"
-                                        aria-describedby="rCPhone" placeholder="사업장(사무실) 전화번호)">
+                                    <label for="firstPasswordLogin">1st Password (Login)</label>
+                                    <input type="text" class="form-control" name="first_password_login" id="first_password_login"
+                                        aria-describedby="first_password" placeholder="1st Password (Login)">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="firstPasswordLogin">2nd Password (E-wallet)</label>
+                                    <input type="text" class="form-control" name="second_password_eWallet" id="second_password_eWallet"
+                                        aria-describedby="second_password" placeholder="2nd Password (E-wallet)">
                                 </div>
                             </div>
                             <!-- end of row -->
