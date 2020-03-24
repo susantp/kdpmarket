@@ -1,6 +1,7 @@
 <?php
 
 use App\SponsorRecruiter;
+use App\Member;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,12 +42,13 @@ Route::get('sponsors', function () {
 })->name('sponsors');
 
 Route::get('chartdata', function () {
-    $collections = SponsorRecruiter::all();
+    // $collections = SponsorRecruiter::all();
+    $collections = Member::select('userID', 'sponsor_id as pid','recruiter_id as id')->get();
     $newcol = array_map(function ($collection) {
         return array(
-            'pid' => $collection['sponsor_id'],
+            'pid' => $collection['pid'],
             'id' => $collection['userID'],
-            'title' => $collection['userID'],
+            'title' => $collection['id'],
         );
     }, $collections->toArray());
 
