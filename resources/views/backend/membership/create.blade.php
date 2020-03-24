@@ -112,7 +112,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="rCheckID">Check ID</label>
+                                        <label for="rCheckID"></label>
                                         <button type="button" class="btn btn-info" id="rCheckID">Check</button>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="rCheckID">Check ID</label>
+                                        <label for="rCheckID"></label>
                                         <button type="button" class="btn btn-info" id="rSponsorCheckID">Check</button>
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="rCheckID">Check</label>
+                                        <label for="rCheckID"></label>
                                         <button type="button" class="btn btn-info" id="rCheckID">Check</button>
                                     </div>
                                 </div>
