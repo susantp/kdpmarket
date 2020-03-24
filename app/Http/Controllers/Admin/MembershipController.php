@@ -8,7 +8,7 @@ use App\SponsorRecruiter;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 class MembershipController extends Controller
 {
 
@@ -47,10 +47,34 @@ class MembershipController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'userID' => 'unique:members,userID'
+            'userID' => 'unique:members,userID',
+            'first_password_login' =>'required',
+            'second_password_eWallet' => 'required',
         ]);
 
-        Member::create($request->all());
+        // Member::create($request->all());
+        $member = new Member();
+        $member->userID = $request->userID;
+        $member->name = $request->name;
+        $member->phone = $request->phone;
+        $member->email = $request->email;
+        $member->rrn = $request->rrn;
+        $member->deposit_name = $request->deposit_name;
+        $member->deposit_date = $request->deposit_date;
+        $member->voucher_no = $request->voucher_no;
+        $member->account_owner = $request->account_owner;
+        $member->bank_name = $request->bank_name;
+        $member->account_number = $request->account_number;
+        $member->recruiter_id = $request->recruiter_id;
+        $member->recruiter_name = $request->recruiter_name;
+        $member->sponsor_id = $request->sponsor_id;
+        $member->sponsor_name = $request->sponsor_name;
+        $member->center_name = $request->center_name;
+        $member->center_phone = $request->center_phone;
+        $member->center_qualify = $request->center_qualify;
+        $member->first_password_login = Hash::make($request->first_password_login);
+        $member->second_password_eWallet = Hash::make($request->second_password_eWallet);
+        $member->save();
         return redirect()->route('membership.index')->with('success', 'Member created successfully.');
     }
 
