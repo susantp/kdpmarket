@@ -156,7 +156,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="rCheckID">Check</label>
+                                        <label for="rCheckID"></label>
                                         <button type="button" class="btn btn-info" id="rCheckID">Check</button>
                                     </div>
                                 </div>
