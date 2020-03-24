@@ -50,7 +50,8 @@ $newcol = array_map(function ($collection) {
 return array(
 'pid' => $collection['sponsor_id'],
 'id' => $collection['userID'],
-'title' => $collection['name'],
+'name' => $collection['name'],
+
 );
 }, $collections->toArray());
 

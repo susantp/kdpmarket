@@ -61,7 +61,7 @@ var chart = new OrgChart(document.getElementById("chart_div"), {
     },
     nodeBinding: {
         field_0: "name",
-        field_1: "title",
+        field_1: "id",
         // field_number_children: "field_number_children"
     },
     nodes: nodes
