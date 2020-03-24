@@ -3,7 +3,6 @@
 use App\SponsorRecruiter;
 use App\Member;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,29 +60,5 @@ Route::get('chartdata', function () {
     // }
     // return $collections;
     return response()->json($newcol);
-
-})->name('chartdata'); **/
-
-Route::get('chartdata', function () {
-
-$collections = App\Member::select('userID', 'sponsor_id','recruiter_id')->get();
-
-$newcol = array_map(function ($collection) {
-return array(
-'pid' => $collection['sponsor_id'],
-'id' => $collection['userID'],
-'title' => $collection['userID'],
-);
-}, $collections->toArray());
-
-return $newcol;
-// $filtered = [];
-// for ($i = 0; $i < count($collections); $i++) {
-
-// array_push($filtered, $collections[$i]->only(['id', 'userID', 'sponsor_id']));
-
-// }
-// return $collections;
-return response()->json($newcol);
 
 })->name('chartdata');
