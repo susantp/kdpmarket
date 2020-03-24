@@ -34,6 +34,7 @@
                     "_token": "{{ csrf_token() }}"
                 },
                 success: function (data) {
+                    // console.log(data);
                     var nodes = data;
 //                             for (var i = 0; i < nodes.length; i++) {
 //                             nodes[i].field_number_children = childCount(nodes[i].id);

@@ -47,7 +47,7 @@ class MembershipController extends Controller
     {
         $request->validate([
             'name' => 'required',
-
+            'userID' => 'unique:members,userID'
         ]);
 
         Member::create($request->all());
@@ -130,6 +130,11 @@ class MembershipController extends Controller
         return response()->json(['success' => 'Got the Request', 'data' => $member, 'count' => $row_count]);
 
         // return response()->json(['success' => 'Got the Request', 'data' => $member]);
+    }
+
+    public function checkUserID(Request $request)
+    {
+        dd($request);
     }
 
     public function getAllUserID(Request $request)
