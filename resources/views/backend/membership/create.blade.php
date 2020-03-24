@@ -6,6 +6,15 @@
 
     <div class="row">
         <div class="col-lg-10">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             <!-- Grayscale Utilities -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -230,21 +239,21 @@
         });
         });
 
-        $('#userID').on('input',function(e){
-            e.preventDefault();
-            var userIdToCheck = $('#userID').val();
-            alert(userIdToCheck);
-            $.ajax({
-                type: "post",
-                url: "{{route('checkUserID')}}",
-                data: {
-                "_token": "{{ csrf_token() }}",
-                userID: userIdToCheck},
-                success: function (response) {
-                    console.log(response);                    
-                }
-            });
-        })
+        // $('#userID').on('input',function(e){
+        //     e.preventDefault();
+        //     var userIdToCheck = $('#userID').val();
+        //     alert(userIdToCheck);
+        //     $.ajax({
+        //         type: "post",
+        //         url: "{{route('checkUserID')}}",
+        //         data: {
+        //         "_token": "{{ csrf_token() }}",
+        //         userID: userIdToCheck},
+        //         success: function (response) {
+        //             console.log(response);                    
+        //         }
+        //     });
+        // })
 
 
     });

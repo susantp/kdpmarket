@@ -47,7 +47,7 @@ class MembershipController extends Controller
     {
         $request->validate([
             'name' => 'required',
-
+            'userID' => 'unique:members,userID'
         ]);
 
         Member::create($request->all());
