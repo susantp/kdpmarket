@@ -112,7 +112,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="rCheckID">Check ID</label>
+                                        {{-- <label for="rCheckID">Check ID</label> --}}
                                         <button type="button" class="btn btn-info" id="rCheckID">Check</button>
                                     </div>
                                 </div>
@@ -128,13 +128,13 @@
                                 <div class="form-row">
                                     <div class="col-md-9">
                                         <div class="form-group">
-                                            <label for="rSPID" class="labelHighlight">Sponsor ID</label>
+                                            {{-- <label for="rSPID" class="labelHighlight">Sponsor ID</label> --}}
                                             <input type="text" class="form-control" name="sponsor_id" id="sponsor_id"
                                                 aria-describedby="rSPID" placeholder="스폰서(후원인) ID">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="rCheckID">Check ID</label>
+                                        {{-- <label for="rCheckID">Check ID</label> --}}
                                         <button type="button" class="btn btn-info" id="rSponsorCheckID">Check</button>
                                     </div>
                                 </div>
@@ -180,6 +180,13 @@
                                         <input class="form-check-input" type="radio" name="inlineRadioOptions"
                                             id="inlineRadio2" form-check-label" for="inlineRadio2">No</label>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="firstPasswordLogin">1st Password Login</label>
+                                    <input type="text" class="form-control" name="center_phone" id="center_phone"
+                                        aria-describedby="rCPhone" placeholder="사업장(사무실) 전화번호)">
                                 </div>
                             </div>
                             <!-- end of row -->
