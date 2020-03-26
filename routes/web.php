@@ -45,13 +45,14 @@ Route::get('sponsors', function () {
 
 Route::get('chartdata', function () {
 
-$collections = App\Member::select('userID', 'sponsor_id','recruiter_id')->get();
+$collections = App\Member::select('userID', 'sponsor_id','name')->get();
 
 $newcol = array_map(function ($collection) {
 return array(
 'pid' => $collection['sponsor_id'],
 'id' => $collection['userID'],
-'title' => $collection['userID'],
+'name' => $collection['name'],
+
 );
 }, $collections->toArray());
 

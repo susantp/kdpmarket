@@ -53,15 +53,16 @@
 //     return count;
 // }
 // OrgChart.templates.rony.field_number_children = '<circle cx="60" cy="110" r="15" fill="#F57C00"></circle><text fill="#ffffff" x="60" y="115" text-anchor="middle">{val}</text>';
-OrgChart.templates.ana.field_1 = '<text class="field_1" style="font-size: 40px;" fill="#fff" x="125" y="70" text-anchor="middle">{val}</text>';
+
+OrgChart.templates.isla.field_1 = '<text class="field_1" style="font-size: 20px;" fill="grey" x="90" y="65" text-anchor="middle">{val}</text>';
 var chart = new OrgChart(document.getElementById("chart_div"), {
-    template: "ana",
+    template: "isla",
     collapse: {
         level: 6
     },
     nodeBinding: {
         field_0: "name",
-        field_1: "title",
+        field_1: "id",
         // field_number_children: "field_number_children"
     },
     nodes: nodes
