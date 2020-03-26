@@ -37,6 +37,7 @@ Route::get(
 )->name('changepassword');
 
 Route::post('dochangepassword', 'Admin\MembershipController@checkPassword')->name('dochangepassword');
+Route::get('memberchangepassword', 'Admin\MembershipController@memberChangePassword')->name('memberchangepassword');
 Route::get('sponsors', function () {
     return view('backend.chart');
 })->name('sponsors');
