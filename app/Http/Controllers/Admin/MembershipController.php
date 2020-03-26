@@ -161,11 +161,7 @@ class MembershipController extends Controller
         dd($request);
     }
 
-    public function getAllUserID(Request $request)
-    {
-
-    }
-
+    
     public function checkPassword(Request $request)
     {
         //"curpwd":"adsf","pwd":"asdf","conpwd":"asdf"
@@ -178,5 +174,11 @@ class MembershipController extends Controller
         if ($response > 0) {
             return view('cauth.changepassword', ['msg' => 'Password Change Successfully']);
         }
+    }
+
+    public function memberChangePassword()
+    {
+        $userIds = Member::select('userID', 'id')->get();
+        return view('backend.membership.changePassword')->with('userIds', $userIds);
     }
 }
