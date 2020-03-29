@@ -67,3 +67,17 @@ return $newcol;
 return response()->json($newcol);
 
 })->name('chartdata');
+
+
+
+// new routes for multiple logins
+Route::get('/login/admin','Auth\LoginController@showAdminLoginForm');
+Route::get('/login/membership','Auth\LoginController@showMembershipLoginForm');
+
+Route::post('/login/admin','Auth\LoginController@adminLogin');
+Route::post('/login/membership','Auth\LoginController@membershipLogin');
+
+Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
+Route::post('/register/admin','Auth\RegisterController@createAdmin');
+Route::view('/admin','admin');
+// Route::view('/membership','membership');
