@@ -183,4 +183,9 @@ class MembershipController extends Controller
         $userIds = Member::select('userID', 'id')->get();
         return view('backend.membership.changePassword', ['userIds' => $userIds, 'role' => 'admin']);
     }
+
+    public function showSponsors()
+    {
+        return view('backend.chart', ['role' => 'admin']);
+    }
 }

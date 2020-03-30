@@ -25,7 +25,7 @@ Route::get('changeInfo', 'Admin\MembershipController@changeInfo')->name('changeI
 Route::post('checkUserID', 'Admin\MembershipController@checkUserID')->name('checkUserID');
 Route::post('checkRecruiterAjax', 'Admin\MembershipController@checkRecruiterInfo')->name('checkRecruiterInfo');
 Route::get('sponsor', function () {
-    return view('backend.chart');
+    return view('backend.chart', ['role' => 'member']);
 })->name('sponsorchart');
 //page route
 Route::get('/home', 'Pages\PageController@index')->name('home');
@@ -38,9 +38,9 @@ Route::get(
 
 Route::post('dochangepassword', 'Admin\MembershipController@checkPassword')->name('dochangepassword');
 Route::get('memberchangepassword', 'Admin\MembershipController@memberChangePassword')->name('memberchangepassword');
-Route::get('sponsors', function () {
-    return view('backend.chart');
-})->name('sponsors');
+// Route::get('sponsors', function () {
+//     return view('backend.chart');
+// })->name('sponsors');
 
 
 Route::get('chartdata', function () {
