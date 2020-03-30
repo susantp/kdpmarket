@@ -22,7 +22,7 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('membership', 'Admin\MembershipController');
 Route::get('changeInfo', 'Admin\MembershipController@changeInfo')->name('changeInfo');
-Route::post('checkUserID','Admin\MembershipController@checkUserID')->name('checkUserID');
+Route::post('checkUserID', 'Admin\MembershipController@checkUserID')->name('checkUserID');
 Route::post('checkRecruiterAjax', 'Admin\MembershipController@checkRecruiterInfo')->name('checkRecruiterInfo');
 Route::get('sponsor', function () {
     return view('backend.chart');
@@ -45,25 +45,28 @@ Route::get('sponsors', function () {
 
 Route::get('chartdata', function () {
 
-$collections = App\Member::select('userID', 'sponsor_id','name')->get();
+    $collections = App\Member::select('userID', 'sponsor_id', 'name')->get();
 
-$newcol = array_map(function ($collection) {
-return array(
-'pid' => $collection['sponsor_id'],
-'id' => $collection['userID'],
-'name' => $collection['name'],
+    $newcol = array_map(function ($collection) {
+        return array(
+            'pid' => $collection['sponsor_id'],
+            'id' => $collection['userID'],
+            'name' => $collection['name'],
 
-);
-}, $collections->toArray());
+        );
+    }, $collections->toArray());
 
-return $newcol;
-// $filtered = [];
-// for ($i = 0; $i < count($collections); $i++) {
-
-// array_push($filtered, $collections[$i]->only(['id', 'userID', 'sponsor_id']));
-
-// }
-// return $collections;
-return response()->json($newcol);
-
+    return $newcol;
+    return response()->json($newcol);
 })->name('chartdata');
+
+Route::prefix('/member')->name('member.')->namespace('Member')->group(function () {
+    Route::get('dashboard', 'MemberController@index')->name('dashboard');
+    Route::namespace('Auth')->group(function () {
+        //Login Routes
+        Route::get('/', 'LoginController@showLoginForm')->name('login');
+        Route::get('/login', 'LoginController@showLoginForm')->name('login');
+        Route::post('/login', 'LoginController@login');
+        Route::post('/logout', 'LoginController@logout')->name('logout');
+    });
+});

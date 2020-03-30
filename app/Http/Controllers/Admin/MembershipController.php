@@ -9,11 +9,13 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 class MembershipController extends Controller
 {
 
     public function __construct()
     {
+
         $this->middleware('auth');
     }
     /**
@@ -24,7 +26,7 @@ class MembershipController extends Controller
     public function index()
     {
         $members = Member::all();
-        return view('backend.membership.index')->with('members', $members);
+        return view('backend.membership.index', ['members' => $members, 'role' => 'admin']);
     }
 
     /**
@@ -34,7 +36,7 @@ class MembershipController extends Controller
      */
     public function create()
     {
-        return view('backend.membership.create');
+        return view('backend.membership.create', ['role' => 'admin']);
     }
 
     /**
@@ -48,7 +50,7 @@ class MembershipController extends Controller
         $request->validate([
             'name' => 'required',
             'userID' => 'unique:members,userID',
-            'first_password_login' =>'required',
+            'first_password_login' => 'required',
             'second_password_eWallet' => 'required',
         ]);
 
@@ -75,7 +77,7 @@ class MembershipController extends Controller
         $member->first_password_login = Hash::make($request->first_password_login);
         $member->second_password_eWallet = Hash::make($request->second_password_eWallet);
         $member->save();
-        return redirect()->route('membership.index')->with('success', 'Member created successfully.');
+        return redirect()->route('membership.index', ['role' => 'admin', 'success' => 'Member created successfully.']);
     }
 
     /**
@@ -87,7 +89,7 @@ class MembershipController extends Controller
     public function show($id)
     {
         $member = Member::find($id);
-        return view('backend.membership.show', compact('member'));
+        return view('backend.membership.show', ['member' => $member, 'role' => 'admin']);
     }
 
     /**
@@ -99,7 +101,7 @@ class MembershipController extends Controller
     public function edit($id)
     {
         $member = Member::find($id);
-        return view('backend.membership.edit', compact('member'));
+        return view('backend.membership.edit', ['member' => $member, 'role' => 'admin']);
     }
 
     /**
@@ -111,7 +113,7 @@ class MembershipController extends Controller
      */
     public function update(Request $request, $id)
     {
-     $request->validate([
+        $request->validate([
             'name' => 'required',
         ]);
         $member = Member::find($id);
@@ -143,7 +145,7 @@ class MembershipController extends Controller
         // echo "<pre>";
         // print_r($userIds);
         // die;
-        return view('backend.membership.changeInfo')->with('userIds', $userIds);
+        return view('backend.membership.changeInfo', ['role' => 'admin', 'userIds' => $userIds]);
     }
     public function checkRecruiterInfo(Request $request)
     {
@@ -161,7 +163,7 @@ class MembershipController extends Controller
         dd($request);
     }
 
-    
+
     public function checkPassword(Request $request)
     {
         //"curpwd":"adsf","pwd":"asdf","conpwd":"asdf"
@@ -179,6 +181,6 @@ class MembershipController extends Controller
     public function memberChangePassword()
     {
         $userIds = Member::select('userID', 'id')->get();
-        return view('backend.membership.changePassword')->with('userIds', $userIds);
+        return view('backend.membership.changePassword', ['userIds' => $userIds, 'role' => 'admin']);
     }
 }
