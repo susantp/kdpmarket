@@ -30,7 +30,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('layouts.backend.navmenu', ['role'=>$role])
+        @include('layouts.backend.navmenu')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
