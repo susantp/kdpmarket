@@ -22,10 +22,10 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('membership', 'Admin\MembershipController');
 Route::get('changeInfo', 'Admin\MembershipController@changeInfo')->name('changeInfo');
-Route::post('checkUserID','Admin\MembershipController@checkUserID')->name('checkUserID');
+Route::post('checkUserID', 'Admin\MembershipController@checkUserID')->name('checkUserID');
 Route::post('checkRecruiterAjax', 'Admin\MembershipController@checkRecruiterInfo')->name('checkRecruiterInfo');
 Route::get('sponsor', function () {
-    return view('backend.chart');
+    return view('backend.chart', ['role' => 'member']);
 })->name('sponsorchart');
 //page route
 Route::get('/home', 'Pages\PageController@index')->name('home');
@@ -38,46 +38,35 @@ Route::get(
 
 Route::post('dochangepassword', 'Admin\MembershipController@checkPassword')->name('dochangepassword');
 Route::get('memberchangepassword', 'Admin\MembershipController@memberChangePassword')->name('memberchangepassword');
-Route::get('sponsors', function () {
-    return view('backend.chart');
-})->name('sponsors');
+// Route::get('sponsors', function () {
+//     return view('backend.chart');
+// })->name('sponsors');
 
 
 Route::get('chartdata', function () {
 
-$collections = App\Member::select('userID', 'sponsor_id','name')->get();
+    $collections = App\Member::select('userID', 'sponsor_id', 'name')->get();
 
-$newcol = array_map(function ($collection) {
-return array(
-'pid' => $collection['sponsor_id'],
-'id' => $collection['userID'],
-'name' => $collection['name'],
+    $newcol = array_map(function ($collection) {
+        return array(
+            'pid' => $collection['sponsor_id'],
+            'id' => $collection['userID'],
+            'name' => $collection['name'],
 
-);
-}, $collections->toArray());
+        );
+    }, $collections->toArray());
 
-return $newcol;
-// $filtered = [];
-// for ($i = 0; $i < count($collections); $i++) {
-
-// array_push($filtered, $collections[$i]->only(['id', 'userID', 'sponsor_id']));
-
-// }
-// return $collections;
-return response()->json($newcol);
-
+    return $newcol;
+    return response()->json($newcol);
 })->name('chartdata');
 
-
-
-// new routes for multiple logins
-Route::get('/login/admin','Auth\LoginController@showAdminLoginForm');
-Route::get('/login/membership','Auth\LoginController@showMembershipLoginForm');
-
-Route::post('/login/admin','Auth\LoginController@adminLogin');
-Route::post('/login/membership','Auth\LoginController@membershipLogin');
-
-Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
-Route::post('/register/admin','Auth\RegisterController@createAdmin');
-Route::view('/admin','admin');
-// Route::view('/membership','membership');
+Route::prefix('/member')->name('member.')->namespace('Member')->group(function () {
+    Route::get('dashboard', 'MemberController@index')->name('dashboard');
+    Route::namespace('Auth')->group(function () {
+        //Login Routes
+        Route::get('/', 'LoginController@showLoginForm')->name('login');
+        Route::get('/login', 'LoginController@showLoginForm')->name('login');
+        Route::post('/login', 'LoginController@login');
+        Route::post('/logout', 'LoginController@logout')->name('logout');
+    });
+});
