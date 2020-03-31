@@ -12,8 +12,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-{{$role}}
-    @if($role=="admin")
+  @if($role=="admin")
     <li class="nav-item active">
         <a class="nav-link" href="{{route('membership.index')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -55,7 +54,7 @@
 
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('changeInfo')}}">Change Information</a>
+                <a class="collapse-item" href="{{route('member.memberEdit',Auth::user()->id)}}">Change Information</a>
                 <a class="collapse-item" href="{{route('memberchangepassword')}}">Change Password</a>
             </div>
         </div>
