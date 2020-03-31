@@ -62,6 +62,8 @@ Route::get('chartdata', function () {
 
 Route::prefix('/member')->name('member.')->namespace('Member')->group(function () {
     Route::get('dashboard', 'MemberController@index')->name('dashboard');
+    Route::get('dashboard/edit/{id}','MemberController@edit')->name('memberEdit');
+    Route::post('dashboard/edit/{id}','MemberController@update')->name('memberUpdate');
     Route::namespace('Auth')->group(function () {
         //Login Routes
         Route::get('/', 'LoginController@showLoginForm')->name('login');

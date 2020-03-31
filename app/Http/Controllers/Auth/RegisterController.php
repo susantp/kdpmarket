@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Admin;
+use App\Membership;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -39,6 +41,8 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:admin');
+        $this->middleware('guest:membership');
     }
 
     /**
@@ -70,4 +74,27 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+
+    // make registration form for admins and companies 
+    public function showAdminRegisterForm()
+    {
+        return view('cauth.Register.adminRegister',['url'=>'admin']);
+    }
+
+    // make similar redirect to view of membership or companies to add thier respective login forms
+
+    // define methods for creating admin
+    protected function createAdmin(Request $request)
+    {
+        $admin = Admin::create([
+            'name'=> $request['name'],
+            'userID'=> $request['userID'],
+            'email'=> $request['email'],
+            'password'=>Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/admin');
+    }
+
+    // define similar methods for creating registering companies and members as required
 }

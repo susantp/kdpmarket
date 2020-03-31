@@ -74,7 +74,7 @@ class MembershipController extends Controller
         $member->center_name = $request->center_name;
         $member->center_phone = $request->center_phone;
         $member->center_qualify = $request->center_qualify;
-        $member->first_password_login = Hash::make($request->first_password_login);
+        $member->password = Hash::make($request->first_password_login);
         $member->second_password_eWallet = Hash::make($request->second_password_eWallet);
         $member->save();
         return redirect()->route('membership.index', ['role' => 'admin', 'success' => 'Member created successfully.']);
