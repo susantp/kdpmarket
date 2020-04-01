@@ -12,7 +12,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-{{$role}}
+
     @if($role=="admin")
     <li class="nav-item active">
         <a class="nav-link" href="{{route('membership.index')}}">
@@ -61,7 +61,7 @@
         </div>
 
     </li>
-    
+
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link" href="{{route('sponsorchart')}}">
