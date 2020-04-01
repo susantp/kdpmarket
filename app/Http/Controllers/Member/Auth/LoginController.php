@@ -17,20 +17,26 @@ class LoginController extends Controller
         // $this->middleware('auth:web')->except('logout');
         // $this->middleware('guest')->except('logout');
     }
+    public function username()
+    {
+        return 'userID';
+    }
     public function showLoginForm()
     {
         // dd(Auth::guard('web')->check());
         return view('cauth.login', [
             'title' => 'Member Login',
-            'loginRoute' => 'member.login'
+            'loginRoute' => 'member.login',
+            'username' => 'userID'
         ]);
     }
 
     public function login(Request $request)
     {
+        // return $request;
         $this->validator($request);
 
-        if (Auth::guard('members')->attempt($request->only('email', 'password'))) {
+        if (Auth::guard('members')->attempt($request->only('userID', 'password'))) {
             return redirect()
                 ->route('member.dashboard')
                 ->with('status', 'You are logged in as Member');
@@ -51,13 +57,13 @@ class LoginController extends Controller
     {
         //validation rules.
         $rules = [
-            'email'    => 'required|exists:members|min:5|max:191',
+            'userID'    => 'required|min:5|max:191',
             'password' => 'required|string|min:4|max:255',
         ];
 
         //custom validation error messages.
         $messages = [
-            'email.exists' => 'These credentials do not match our records.',
+            'userID.exists' => 'These credentials do not match our records.',
         ];
 
         //validate the request.

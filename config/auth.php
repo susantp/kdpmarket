@@ -49,19 +49,19 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-        'admin'=> [
+        'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        'membership'=> [
+        'membership' => [
             'driver' => 'session',
             'provider' => 'membership',
         ],
-        'companies'=> [
+        'companies' => [
             'driver' => 'session',
             'provider' => 'companies_info',
         ],
-        
+
     ],
 
     /*

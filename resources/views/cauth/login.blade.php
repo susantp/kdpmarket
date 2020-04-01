@@ -20,7 +20,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                                        aria-describedby="emailHelp" name="email" placeholder="Enter email or userid">
+                                        aria-describedby="emailHelp" name="{{$username}}" placeholder="username">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

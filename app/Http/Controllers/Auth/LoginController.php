@@ -48,7 +48,13 @@ class LoginController extends Controller
             [
                 'title' => 'Admin Login',
                 'loginRoute' => 'login',
+                'username' => 'name'
             ]
         );
+    }
+
+    public function username()
+    {
+        return 'name';
     }
 }
