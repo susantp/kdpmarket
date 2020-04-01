@@ -61,4 +61,9 @@ class MemberController extends Controller
         return redirect()->route('member.dashboard')
             ->with('success', 'Member updated successfully');
     }
+
+    public function sponsorChartForMember(){
+        return view('backend.chart', ['role' => 'member']);
+    }
 }
+
