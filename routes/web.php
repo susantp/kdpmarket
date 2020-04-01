@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Member\MemberController;
 use App\SponsorRecruiter;
 use App\Member;
 use Illuminate\Support\Facades\Route;
@@ -71,4 +72,6 @@ Route::prefix('/member')->name('member.')->namespace('Member')->group(function (
         Route::post('/login', 'LoginController@login');
         Route::post('/logout', 'LoginController@logout')->name('logout');
     });
+
+    Route::get('sponsor','MemberController@sponsorChartForMember')->name('sponsorchartForMember');
 });
