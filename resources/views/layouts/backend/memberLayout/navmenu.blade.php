@@ -55,7 +55,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('member.memberEdit',Auth::user()->id)}}">Change Information</a>
-                {{-- <a class="collapse-item" href="{{route('memberchangepassword')}}">Change Password</a> --}}
+                <a class="collapse-item" href="{{route('member.changepassword')}}">Change Password</a>
             </div>
         </div>
 

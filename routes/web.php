@@ -74,4 +74,8 @@ Route::prefix('/member')->name('member.')->namespace('Member')->group(function (
     });
 
     Route::get('sponsor','MemberController@sponsorChartForMember')->name('sponsorchartForMember');
+Route::get('changepassword', 'MemberController@memberChangePassword')->name('changepassword');
+Route::post('dochangememberpassword', 'MemberController@checkPassword')->name('dochangememberpassword');
+
+
 });
