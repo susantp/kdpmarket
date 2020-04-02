@@ -26,7 +26,7 @@ Route::get('changeInfo', 'Admin\MembershipController@changeInfo')->name('changeI
 Route::post('checkUserID', 'Admin\MembershipController@checkUserID')->name('checkUserID');
 Route::post('checkRecruiterAjax', 'Admin\MembershipController@checkRecruiterInfo')->name('checkRecruiterInfo');
 Route::get('sponsor', function () {
-    return view('backend.chart', ['role' => 'member']);
+    return view('backend.chart', ['role' => 'admin']);
 })->name('sponsorchart');
 //page route
 Route::get('/home', 'Pages\PageController@index')->name('home');
@@ -63,8 +63,8 @@ Route::get('chartdata', function () {
 
 Route::prefix('/member')->name('member.')->namespace('Member')->group(function () {
     Route::get('dashboard', 'MemberController@index')->name('dashboard');
-    Route::get('dashboard/edit/{id}','MemberController@edit')->name('memberEdit');
-    Route::post('dashboard/edit/{id}','MemberController@update')->name('memberUpdate');
+    Route::get('dashboard/edit/{id}', 'MemberController@edit')->name('memberEdit');
+    Route::post('dashboard/edit/{id}', 'MemberController@update')->name('memberUpdate');
     Route::namespace('Auth')->group(function () {
         //Login Routes
         Route::get('/', 'LoginController@showLoginForm')->name('login');
@@ -73,9 +73,7 @@ Route::prefix('/member')->name('member.')->namespace('Member')->group(function (
         Route::post('/logout', 'LoginController@logout')->name('logout');
     });
 
-    Route::get('sponsor','MemberController@sponsorChartForMember')->name('sponsorchartForMember');
-Route::get('changepassword', 'MemberController@memberChangePassword')->name('changepassword');
-Route::post('dochangememberpassword', 'MemberController@checkPassword')->name('dochangememberpassword');
-
-
+    Route::get('sponsor', 'MemberController@sponsorChartForMember')->name('sponsorchartForMember');
+    Route::get('changepassword', 'MemberController@memberChangePassword')->name('changepassword');
+    Route::post('dochangememberpassword', 'MemberController@checkPassword')->name('dochangememberpassword');
 });
