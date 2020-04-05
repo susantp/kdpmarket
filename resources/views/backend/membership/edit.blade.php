@@ -180,14 +180,12 @@
                             <br><br>
                             <div class="form-row">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                    <input class="form-check-input" type="radio" name="center_qualify"
+                                        id="inlineRadio1" form-check-label" for="inlineRadio1" value="yes" {{ old('center_qualify', $member->center_qualify) === 'yes' ? 'checked' : '' }}>Yes</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">No</label>
+                                    <input class="form-check-input" type="radio" name="center_qualify"
+                                        id="inlineRadio2" form-check-label" for="inlineRadio2" value="no" {{ old('center_qualify', $member->center_qualify) == 'no' ? 'checked' : '' }}>No</label>
                                 </div>
                             </div>
                         </div>
