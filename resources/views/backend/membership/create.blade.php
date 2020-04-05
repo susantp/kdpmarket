@@ -150,9 +150,15 @@
                                 <div class="form-row">
                                     <div class="col-md-9">
                                         <div class="form-group">
-                                            <label for="rCName" class="labelHighlight">Center Name</label>
-                                            <input type="text" class="form-control" name="center_name" id="center_name"
-                                                aria-describedby="rCName" placeholder="사업장(사무실) 오너 이름">
+                                            <label for="rID">Center Name</label>
+                                            <select name="center_name" id="center_name" class="form-control">
+                                                <option>select</option>
+                                                @foreach ($companies as $company)
+                                            <option value="{{$company->company_name}}" data-phone="{{$company->company_phone}}">{{$company->company_name}}</option>
+                                                @endforeach
+                                            </select>
+                                            {{-- <input type="text" class="form-control" name="userID" id="userID"
+                                                aria-describedby="rID" placeholder="회원 ID (6자리이상)"> --}}
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -253,22 +259,13 @@
         });
         });
 
-        // $('#userID').on('input',function(e){
-        //     e.preventDefault();
-        //     var userIdToCheck = $('#userID').val();
-        //     alert(userIdToCheck);
-        //     $.ajax({
-        //         type: "post",
-        //         url: "{{route('checkUserID')}}",
-        //         data: {
-        //         "_token": "{{ csrf_token() }}",
-        //         userID: userIdToCheck},
-        //         success: function (response) {
-        //             console.log(response);                    
-        //         }
-        //     });
-        // })
-
+       $('#center_name').change(function(e)
+       {
+           e.preventDefault();
+                var company_phone = $(this).find(':selected').data('phone');
+                $('#center_phone').val(company_phone);
+                // alert(com_ph);
+       });
 
     });
 

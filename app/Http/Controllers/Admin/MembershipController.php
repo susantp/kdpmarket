@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\CompanyInfo;
 use App\Http\Controllers\Controller;
 use App\Member;
 use App\SponsorRecruiter;
@@ -36,7 +37,9 @@ class MembershipController extends Controller
      */
     public function create()
     {
-        return view('backend.membership.create', ['role' => 'admin']);
+
+        $companies = CompanyInfo::select('company_name', 'company_phone')->get();
+        return view('backend.membership.create', ['role' => 'admin','companies'=>$companies]);
     }
 
     /**
@@ -53,16 +56,19 @@ class MembershipController extends Controller
             'first_password_login' => 'required',
             'second_password_eWallet' => 'required',
         ]);
-
+            // dd($request);
         // Member::create($request->all());
         $member = new Member();
         $member->userID = $request->userID;
         $member->name = $request->name;
         $member->phone = $request->phone;
+        if (empty($request->email)) {
+            $request->email = '-';
+        }
         $member->email = $request->email;
         $member->rrn = $request->rrn;
         $member->deposit_name = $request->deposit_name;
-        $member->deposit_date = $request->deposit_date;
+        // $member->deposit_date = $request->deposit_date;
         $member->voucher_no = $request->voucher_no;
         $member->account_owner = $request->account_owner;
         $member->bank_name = $request->bank_name;
@@ -116,9 +122,31 @@ class MembershipController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
+        // dd($request);
         $member = Member::find($id);
+        // $member->userID = $request->userID;
+        $member->name = $request->name;
+        $member->phone = $request->phone;
+        if (empty($request->email)) {
+            $request->email = '-';
+        }
+        $member->email = $request->email;
+        $member->rrn = $request->rrn;
+        $member->deposit_name = $request->deposit_name;
+        // $member->deposit_date = $request->deposit_date;
+        $member->voucher_no = $request->voucher_no;
+        $member->account_owner = $request->account_owner;
+        $member->bank_name = $request->bank_name;
+        $member->account_number = $request->account_number;
+        $member->recruiter_id = $request->recruiter_id;
+        $member->recruiter_name = $request->recruiter_name;
+        $member->sponsor_id = $request->sponsor_id;
+        $member->sponsor_name = $request->sponsor_name;
+        $member->center_name = $request->center_name;
+        $member->center_phone = $request->center_phone;
+        $member->center_qualify = $request->center_qualify;
 
-        $member->update($request->all());
+        $member->save();
 
         return redirect()->route('membership.index')
             ->with('success', 'Member updated successfully');

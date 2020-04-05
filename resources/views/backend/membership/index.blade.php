@@ -36,7 +36,7 @@
                         <td>Spo Name</td>
                         <td>Center Name</td>
                         <td>Center Phone</td>
-                        {{-- <td>Center Qualify</td> --}}
+                        <td>Center Qualify</td>
                         <td>Action</td>
 
                     </tr>
@@ -53,7 +53,7 @@
                         </td>
                         <td>{{$member->deposit_name}}
                         </td>
-                        <td>{{$member->deposit_date}}
+                        <td>{{$member->created_at->format('j-m-Y h:i:s A')}}
                         </td>
                         <td>{{$member->voucher_no}}
                         </td>
@@ -76,6 +76,14 @@
                         <td>{{$member->center_name}}
                         </td>
                         <td>{{$member->center_phone}}
+                        </td>
+                        <td>
+                            @if ($member->center_qualify == 'yes')
+                                Yes
+                            @else
+                                No
+                            @endif
+                            {{-- {{$member->center_qualify}} --}}
                         </td>
                         <td>
                             <a class="btn btn-primary" href="{{ route('membership.edit',$member->id) }}">Edit</a>

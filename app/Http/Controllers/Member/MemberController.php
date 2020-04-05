@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Member;
 use Illuminate\Support\Facades\Hash;
+use App\CompanyInfo;
+
 
 
 class MemberController extends Controller
@@ -27,7 +29,8 @@ class MemberController extends Controller
     public function edit($id)
     {
         $member = Member::find($id);
-        return view('member.edit', ['member' => $member, 'role' => 'member']);
+        $companies = CompanyInfo::select('company_name', 'company_phone')->get();
+        return view('member.edit', ['member' => $member, 'role' => 'member','companies'=>$companies]);
     }
 
     public function update(Request $request, $id)
@@ -44,7 +47,7 @@ class MemberController extends Controller
         $member->email = $request->email;
         $member->rrn = $request->rrn;
         $member->deposit_name = $request->deposit_name;
-        $member->deposit_date = $request->deposit_date;
+        // $member->deposit_date = $request->deposit_date;
         $member->voucher_no = $request->voucher_no;
         $member->account_owner = $request->account_owner;
         $member->bank_name = $request->bank_name;
