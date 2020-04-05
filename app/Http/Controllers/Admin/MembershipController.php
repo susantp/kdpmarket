@@ -62,7 +62,7 @@ class MembershipController extends Controller
         $member->email = $request->email;
         $member->rrn = $request->rrn;
         $member->deposit_name = $request->deposit_name;
-        $member->deposit_date = $request->deposit_date;
+        // $member->deposit_date = $request->deposit_date;
         $member->voucher_no = $request->voucher_no;
         $member->account_owner = $request->account_owner;
         $member->bank_name = $request->bank_name;

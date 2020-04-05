@@ -19,7 +19,7 @@
         <td>Sponsor Name</td>
         <td>Center Name</td>
         <td>Center Phone</td>
-        {{-- <td>Center Qualify</td> --}}
+        <td>Center Qualify</td>
 
     </tr>
 
@@ -34,7 +34,7 @@
         </td>
         <td>{{$member->deposit_name}}
         </td>
-        <td>{{$member->deposit_date}}
+        <td>{{$member->created_at->format('j-m-Y h:i:s A')}}
         </td>
         <td>{{$member->voucher_no}}
         </td>
@@ -57,6 +57,8 @@
         <td>{{$member->center_name}}
         </td>
         <td>{{$member->center_phone}}
+        </td>
+        <td>{{$member->center_qualify}}
         </td>
 
     </tr>
