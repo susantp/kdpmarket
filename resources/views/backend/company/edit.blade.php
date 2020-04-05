@@ -23,14 +23,14 @@
                     </h6>
                 </div>
                 <div class="card-body">
-                    <form class="memberRegistration" action="{{ route('companies.update') }}" method="POST">
+                    <form class="memberRegistration" action="{{route('companies.update',$company->id)}}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="rName">Company Name</label>
-                                    <input type="text" class="form-control" name="company_name" id="name" placeholder="회원이름" value="{{$company->company_phone}}">
+                                    <input type="text" class="form-control" name="company_name" id="name" placeholder="회원이름" value="{{$company->company_name}}">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -44,7 +44,7 @@
                                 <div class="form-group">
                                     <label for="rEmail">Company Email</label>
                                     <input type="email" class="form-control" name="company_email" id="email"
-                                        aria-describedby="rEmail" placeholder="이메일 주소" value="{{$company->company_phone}}">
+                                        aria-describedby="rEmail" placeholder="이메일 주소" value="{{$company->company_email}}">
                                 </div>
                             </div>
                             <div class="form-group">

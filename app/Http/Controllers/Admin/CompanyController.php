@@ -78,7 +78,9 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $company = CompanyInfo::find($id);
+        $members = Member::select('name', 'id')->get();
+        return view('backend.company.edit', ['company' => $company, 'role' => 'admin','members'=>$members]);
     }
 
     /**
@@ -90,7 +92,15 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $company = CompanyInfo::find($id);
+        // dd($request);
+        $company->company_name = $request->company_name;
+        $company->company_phone = $request->company_phone;
+        $company->company_email = $request->company_email;
+        $company->company_owner = $request->company_owner;
+        
+        $company->save();
+        return redirect()->route('companies.index', ['role' => 'admin', 'success' => 'Company Updated successfully.']);
     }
 
     /**

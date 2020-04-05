@@ -18,7 +18,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Edit Member 등록화면 설명</h6>
             </div>
             <div class="card-body">
-                <form class="memberRegistration" action="{{route('member.memberUpdate',$member->id)}}}" method="POST">
+                <form class="memberRegistration" action="{{route('member.memberUpdate',$member->id)}}" method="POST">
                     @csrf
                     {{-- @method('PUT') --}}
                     <div class="row">
