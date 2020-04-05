@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\CompanyInfo;
 use App\Http\Controllers\Controller;
 use App\Member;
 use App\SponsorRecruiter;
@@ -36,7 +37,9 @@ class MembershipController extends Controller
      */
     public function create()
     {
-        return view('backend.membership.create', ['role' => 'admin']);
+
+        $companies = CompanyInfo::select('company_name', 'company_phone')->get();
+        return view('backend.membership.create', ['role' => 'admin','companies'=>$companies]);
     }
 
     /**
