@@ -12,6 +12,8 @@ class CompanyInfo extends Authenticatable
     use Notifiable;
 
     protected $guard = 'companies';
+    protected $table = 'companies_info';
+
     protected $fillable = [
         'company_name','company_phone','company_email','password',
     ];
@@ -19,4 +21,11 @@ class CompanyInfo extends Authenticatable
     protected $hidden = [
         'password','remember_token',
     ];
+
+    public function members()
+    {
+        // return $this->belongsTo('App\Member');
+        return $this->belongsTo('App\Member', 'company_owner');
+        
+    }
 }

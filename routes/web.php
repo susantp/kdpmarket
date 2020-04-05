@@ -25,6 +25,7 @@ Route::resource('membership', 'Admin\MembershipController');
 Route::get('changeInfo', 'Admin\MembershipController@changeInfo')->name('changeInfo');
 Route::post('checkUserID', 'Admin\MembershipController@checkUserID')->name('checkUserID');
 Route::post('checkRecruiterAjax', 'Admin\MembershipController@checkRecruiterInfo')->name('checkRecruiterInfo');
+Route::resource('companies', 'Admin\CompanyController');
 Route::get('sponsor', function () {
     return view('backend.chart', ['role' => 'admin']);
 })->name('sponsorchart');
