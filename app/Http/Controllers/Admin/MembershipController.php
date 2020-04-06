@@ -107,7 +107,8 @@ class MembershipController extends Controller
     public function edit($id)
     {
         $member = Member::find($id);
-        return view('backend.membership.edit', ['member' => $member, 'role' => 'admin']);
+        $companies = CompanyInfo::select('company_name', 'company_phone')->get();
+        return view('backend.membership.edit', ['member' => $member, 'role' => 'admin','companies'=>$companies]);
     }
 
     /**
