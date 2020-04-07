@@ -15,7 +15,7 @@
         <!-- Grayscale Utilities -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Member Registration 등록화면 설명</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Member Registration</h6>
             </div>
             <div class="card-body">
                 <form class="memberRegistration" action="{{url("/membership/$member->id")}}" method="POST">
@@ -26,7 +26,7 @@
                             <div class="form-group">
                                 <label for="rID">ID</label>
                                 <input type="text" class="form-control" value="{{$member->userID}}" name="userID"
-                                    id="userID" aria-describedby="rID" placeholder="회원 ID (6자리이상)" >
+                                    id="userID" aria-describedby="rID" placeholder="회원 ID (6자리이상)">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -180,12 +180,14 @@
                             <br><br>
                             <div class="form-row">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="center_qualify"
-                                        id="inlineRadio1" form-check-label" for="inlineRadio1" value="yes" {{ old('center_qualify', $member->center_qualify) === 'yes' ? 'checked' : '' }}>Yes</label>
+                                    <input class="form-check-input" type="radio" name="center_qualify" id="inlineRadio1"
+                                        form-check-label" for="inlineRadio1" value="yes"
+                                        {{ old('center_qualify', $member->center_qualify) === 'yes' ? 'checked' : '' }}>Yes</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="center_qualify"
-                                        id="inlineRadio2" form-check-label" for="inlineRadio2" value="no" {{ old('center_qualify', $member->center_qualify) == 'no' ? 'checked' : '' }}>No</label>
+                                    <input class="form-check-input" type="radio" name="center_qualify" id="inlineRadio2"
+                                        form-check-label" for="inlineRadio2" value="no"
+                                        {{ old('center_qualify', $member->center_qualify) == 'no' ? 'checked' : '' }}>No</label>
                                 </div>
                             </div>
                         </div>
@@ -217,9 +219,9 @@
                     id: recruiter_id},
                 success: function (data) {
                     // console.log(data);
-                    
+
                         $('#recuriter_name').val(data.data[0].name);
-                    
+
                 }
             });
         });
@@ -239,14 +241,14 @@
                 id: sponsor_id
                 },
             success: function (data) {
-                
+
                 console.log(data.data[0].name);
                 if(data.count>=2) {
                 alert("Limit Reached !");
                 }else{
                 $('#sponsor_name').val(data.data[0].name);
                 }
-        
+
         }
         });
         });

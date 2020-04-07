@@ -10,16 +10,16 @@
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                    <li>{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
-        @endif
+            @endif
             <!-- Grayscale Utilities -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">
-                        Member Registration 등록화면 설명
+                        Member Registration
                     </h6>
                 </div>
                 <div class="card-body">
@@ -154,7 +154,9 @@
                                             <select name="center_name" id="center_name" class="form-control">
                                                 <option>select</option>
                                                 @foreach ($companies as $company)
-                                            <option value="{{$company->company_name}}" data-phone="{{$company->company_phone}}">{{$company->company_name}}</option>
+                                                <option value="{{$company->company_name}}"
+                                                    data-phone="{{$company->company_phone}}">{{$company->company_name}}
+                                                </option>
                                                 @endforeach
                                             </select>
                                             {{-- <input type="text" class="form-control" name="userID" id="userID"
@@ -180,7 +182,8 @@
                                 <div class="form-row">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="center_qualify"
-                                            id="inlineRadio1" form-check-label" for="inlineRadio1" value="yes">Yes</label>
+                                            id="inlineRadio1" form-check-label" for="inlineRadio1"
+                                            value="yes">Yes</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="center_qualify"
@@ -191,15 +194,17 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="firstPasswordLogin">1st Password (Login)</label>
-                                    <input type="text" class="form-control" name="first_password_login" id="first_password_login"
-                                        aria-describedby="first_password" placeholder="1st Password (Login)">
+                                    <input type="text" class="form-control" name="first_password_login"
+                                        id="first_password_login" aria-describedby="first_password"
+                                        placeholder="1st Password (Login)">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="firstPasswordLogin">2nd Password (E-wallet)</label>
-                                    <input type="text" class="form-control" name="second_password_eWallet" id="second_password_eWallet"
-                                        aria-describedby="second_password" placeholder="2nd Password (E-wallet)">
+                                    <input type="text" class="form-control" name="second_password_eWallet"
+                                        id="second_password_eWallet" aria-describedby="second_password"
+                                        placeholder="2nd Password (E-wallet)">
                                 </div>
                             </div>
                             <!-- end of row -->
