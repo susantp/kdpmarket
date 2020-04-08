@@ -8,7 +8,7 @@
             <!-- Grayscale Utilities -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">company List</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Center List</h6>
                 </div>
                 <div class="card-body">
                     {{-- <div class="">
@@ -16,14 +16,14 @@
                 </div> --}}
 
 
-                <table class="table table-bordered table-responsive dataTable">
+                <table class="table table-hover table-striped table-bordered  dataTable">
                     <tr>
                         <td>SN</td>
-                        <td>Company Name</td>
-                        <td>Company Phone</td>
-                        <td>Company E-mail</td>
-                        <td>Company Owner</td>
-                        <td>Action</td>
+                        <td>Center Name</td>
+                        <td>Center Phone</td>
+                        <td>Center E-mail</td>
+                        <td>Center Owner</td>
+                        {{-- <td>Action</td> --}}
 
                     </tr>
                     @foreach ($companies as $company)
@@ -44,15 +44,15 @@
                             
                         </td>
                        
-                        <td>
+                        {{-- <td>
                             <a class="btn btn-primary" href="{{ route('companies.edit',$company->id) }}">Edit</a>
-                            {{-- <a class="btn btn-info" href="{{ route('companyship.show',$company->id) }}">Show</a> --}}
-                            {{-- <form action="{{ route('companyship.destroy',$company->id) }}" method="POST">
+                            <a class="btn btn-info" href="{{ route('companyship.show',$company->id) }}">Show</a> 
+<form action="{{ route('companyship.destroy',$company->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
-                            </form> --}}
-                        </td>
+                            </form>
+                        </td> --}}
                     </tr>
 
                     @endforeach
