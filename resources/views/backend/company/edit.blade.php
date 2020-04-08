@@ -52,7 +52,7 @@
                                 <select name="company_owner" id="company_owner" class="form-control">
                                     <option value="">select</option>
                                     @foreach ($members as $member)
-                                    <option value="{{$member->id}}">{{$member->name}}</option>
+                                    <option value="{{$member->id}}" {{ old('company_owner', $company->company_owner) == $member->id ? 'selected' : '' }}>{{$member->name}}</option>
                                     @endforeach
                                 </select>
                             </div>

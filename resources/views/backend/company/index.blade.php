@@ -35,7 +35,13 @@
                         </td>
                         <td>{{$company->company_email}}
                         </td>
-                        <td>{{$company->company_owner}}
+                        <td>
+                            @if ($company->company_owner)
+                            {{$company->members->name}}
+                            @else
+                               - 
+                            @endif
+                            
                         </td>
                        
                         <td>
