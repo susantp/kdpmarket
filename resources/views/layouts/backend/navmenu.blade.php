@@ -55,13 +55,13 @@
 
     <li class="nav-item">
 
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCompany" aria-expanded="true"
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-user"></i>
             <span>Company Info</span>
         </a>
 
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseCompany" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('companies.index')}}">List Companies</a>
                 <a class="collapse-item" href="{{route('companies.create')}}">Add New Company</a>
