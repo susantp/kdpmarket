@@ -26,7 +26,7 @@ class MembershipController extends Controller
      */
     public function index()
     {
-        $members = Member::all();
+        $members = Member::paginate(10);
         return view('backend.membership.index', ['members' => $members, 'role' => 'admin']);
     }
 

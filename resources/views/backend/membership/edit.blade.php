@@ -26,7 +26,7 @@
                             <div class="form-group">
                                 <label for="rID">ID</label>
                                 <input type="text" class="form-control" value="{{$member->userID}}" name="userID"
-                                    id="userID" aria-describedby="rID" placeholder="회원 ID (6자리이상)">
+                                    id="userID" aria-describedby="rID" placeholder="회원 ID (6자리이상)" disabled>
                             </div>
                         </div>
                         <div class="col-md-3">
