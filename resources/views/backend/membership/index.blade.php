@@ -98,6 +98,10 @@
 
                     @endforeach
                 </table>
+                <div class="d-flex justify-content-center">
+
+                    {{ $members->links() }}
+                </div>
             </div>
         </div>
     </div>
