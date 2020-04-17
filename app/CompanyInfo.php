@@ -15,17 +15,17 @@ class CompanyInfo extends Authenticatable
     protected $table = 'companies_info';
 
     protected $fillable = [
-        'company_name','company_phone','company_email','password',
+        'company_name','company_phone','company_email','center_qualify'
     ];
 
     protected $hidden = [
-        'password','remember_token',
+        'remember_token',
     ];
 
     public function members()
     {
         // return $this->belongsTo('App\Member');
-        return $this->belongsTo('App\Member', 'company_owner');
+        return $this->belongsTo('App\Member', 'member_id');
         
     }
 }

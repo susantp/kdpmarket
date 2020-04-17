@@ -53,7 +53,7 @@
 
     </li>
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
 
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCompany" aria-expanded="true"
             aria-controls="collapseTwo">
@@ -68,7 +68,7 @@
             </div>
         </div>
 
-    </li>
+    </li> --}}
 
     <!-- Nav Item - Pages Collapse Menu -->
     @if($role=="admin")
