@@ -121,7 +121,9 @@ class MembershipController extends Controller
     public function edit($id)
     {
         $member = Member::find($id);
-        $companies = CompanyInfo::select('company_name', 'company_phone')->get();
+        $companies = CompanyInfo::where('member_id',$id)->first();
+        // dd($companies);
+        // $companies = CompanyInfo::select('company_name', 'company_phone')->get();
         return view('backend.membership.edit', ['member' => $member, 'role' => 'admin', 'companies' => $companies]);
     }
 
@@ -157,11 +159,15 @@ class MembershipController extends Controller
         $member->recruiter_name = $request->recruiter_name;
         $member->sponsor_id = $request->sponsor_id;
         $member->sponsor_name = $request->sponsor_name;
-        $member->center_name = $request->center_name;
-        $member->center_phone = $request->center_phone;
-        $member->center_qualify = $request->center_qualify;
-
         $member->save();
+
+        $company =  new CompanyInfo();
+        $company->company_name = $request->center_name;
+        $company->company_phone = $request->center_phone;
+        $company->center_qualify = $request->center_qualify;
+        $company->member_id = $id;
+        $company->save();
+
 
         return redirect()->route('membership.index')
             ->with('success', 'Member updated successfully');
