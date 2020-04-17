@@ -39,7 +39,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="rPhone">Phone</label>
-                                <input type="text" class="form-control" value="{{$member->phone}}" name="phone"
+                                <input type="tel" class="form-control" value="{{$member->phone}}" name="phone"
                                     id="phone" aria-describedby="rPhone" placeholder="전화번호">
                             </div>
                         </div>

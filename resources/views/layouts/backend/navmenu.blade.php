@@ -61,12 +61,12 @@
             <span>Center Info</span>
         </a>
 
-        <div id="collapseCompany" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        {{-- <div id="collapseCompany" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('companies.index')}}">List Centers</a>
                 <a class="collapse-item" href="{{route('companies.create')}}">Add New Center</a>
             </div>
-        </div>
+        </div> --}}
 
     </li>
 
