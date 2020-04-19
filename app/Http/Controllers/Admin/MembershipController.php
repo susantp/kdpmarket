@@ -26,7 +26,9 @@ class MembershipController extends Controller
      */
     public function index()
     {
-        $members = Member::paginate(10);
+        // $members = Member::paginate(10);
+        $members = Member::with('company')->get();
+        // return $members;
         return view('backend.membership.index', ['members' => $members, 'role' => 'admin']);
     }
 
@@ -121,7 +123,7 @@ class MembershipController extends Controller
     public function edit($id)
     {
         $member = Member::find($id);
-        $companies = CompanyInfo::where('member_id',$id)->first();
+        $companies = CompanyInfo::where('member_id', $id)->first();
         // dd($companies);
         // $companies = CompanyInfo::select('company_name', 'company_phone')->get();
         return view('backend.membership.edit', ['member' => $member, 'role' => 'admin', 'companies' => $companies]);

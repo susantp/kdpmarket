@@ -30,7 +30,7 @@ class MemberController extends Controller
     {
         $member = Member::find($id);
         $companies = CompanyInfo::select('company_name', 'company_phone')->get();
-        return view('member.edit', ['member' => $member, 'role' => 'member','companies'=>$companies]);
+        return view('member.edit', ['member' => $member, 'role' => 'member', 'companies' => $companies]);
     }
 
     public function update(Request $request, $id)
@@ -66,7 +66,8 @@ class MemberController extends Controller
             ->with('success', 'Member updated successfully');
     }
 
-    public function sponsorChartForMember(){
+    public function sponsorChartForMember()
+    {
         return view('backend.chart', ['role' => 'member']);
     }
 
@@ -84,44 +85,35 @@ class MemberController extends Controller
         if ($request->password_type == 'first_password_login') {
             $old_password = Member::select('password')->where('id', $userid)->first();;
             // dd($old_password->password);
-            if(Hash::check($request->curpwd, $old_password->password)){
+            if (Hash::check($request->curpwd, $old_password->password)) {
                 if ($request->pwd == $request->conpwd) {
                     $user = Member::find($userid);
                     $user->password = Hash::make($request->pwd);
                     $user->save();
-                    return view('member.changePassword', ['msg' => 'Password Changed Successfully','role'=>'member']);
+                    return view('member.changePassword', ['msg' => 'Password Changed Successfully', 'role' => 'member']);
+                } else {
+                    return view('member.changePassword', ['error' => 'New Set Password Doesnot Matched', 'role' => 'member']);
                 }
-                else{
-                    return view('member.changePassword', ['error' => 'New Set Password Doesnot Matched','role'=>'member']);
-
-                }
+            } else {
+                return view('member.changePassword', ['error' => 'Password Doesnot Matched', 'role' => 'member']);
             }
-            else{
-                    return view('member.changePassword', ['error' => 'Password Doesnot Matched','role'=>'member']);
-                }
-            }
-        else if ($request->password_type == 'second_password_eWallet') {
+        } else if ($request->password_type == 'second_password_eWallet') {
             $old_password = Member::select('second_password_eWallet')->where('id', $userid)->first();;
             // dd($old_password->password);
-            if(Hash::check($request->curpwd, $old_password->password)){
+            if (Hash::check($request->curpwd, $old_password->password)) {
                 if ($request->pwd == $request->conpwd) {
                     $user = Member::find($userid);
                     $user->second_password_eWallet = Hash::make($request->pwd);
                     $user->save();
-                    return view('member.changePassword', ['msg' => 'E-Wallet Password Changed Successfully','role'=>'member']);
+                    return view('member.changePassword', ['msg' => 'E-Wallet Password Changed Successfully', 'role' => 'member']);
+                } else {
+                    return view('member.changePassword', ['error' => 'New Set Password Doesnot Matched', 'role' => 'member']);
                 }
-                else{
-                    return view('member.changePassword', ['error' => 'New Set Password Doesnot Matched','role'=>'member']);
-
-                }
+            } else {
+                return view('member.changePassword', ['error' => 'Password Doesnot Matched', 'role' => 'member']);
             }
-            else{
-                    return view('member.changePassword', ['error' => 'Password Doesnot Matched','role'=>'member']);
-                }
-        }
-        else{
-            return view('member.changePassword', ['msg' => 'Invalid Request','role'=>'member']);
+        } else {
+            return view('member.changePassword', ['msg' => 'Invalid Request', 'role' => 'member']);
         }
     }
 }
-

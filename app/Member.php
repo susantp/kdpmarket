@@ -29,4 +29,8 @@ class Member extends Authenticatable
         'center_name',
         'center_phone'
     ];
+    public function company()
+    {
+        return $this->hasOne('App\CompanyInfo');
+    }
 }
