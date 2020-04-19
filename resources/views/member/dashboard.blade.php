@@ -54,11 +54,21 @@
         </td>
         <td>{{$member->sponsor_name}}
         </td>
-        <td>{{$member->center_name}}
+        <td>{{is_null($member->company) ? "" : $member->company->company_name}}
         </td>
-        <td>{{$member->center_phone}}
+        <td>{{is_null($member->company) ? "" : $member->company->company_phone}}
         </td>
-        <td>{{$member->center_qualify}}
+        <td>
+            @if ($member->company)
+                @if ($member->company->center_qualify == 'yes')
+                        {{"Yes"}}                                        
+                @else
+                   {{ "No"}}
+                @endif
+            @else
+                 {{ "No"}}
+            @endif
+            {{-- {{$member->center_qualify}} --}}
         </td>
 
     </tr>

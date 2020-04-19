@@ -151,31 +151,28 @@
                                     placeholder="스폰서(후원인) 이름">
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-row">
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <label for="rID">Center Name</label>
-                                        <select name="center_name" id="center_name" class="form-control">
-                                            <option>select</option>
-                                            @foreach ($companies as $company)
-                                        <option value="{{$company->company_name}}" data-phone="{{$company->company_phone}}">{{$company->company_name}}</option>
-                                            @endforeach
-                                        </select>
-                                        {{-- <input type="text" class="form-control" name="userID" id="userID"
-                                            aria-describedby="rID" placeholder="회원 ID (6자리이상)"> --}}
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="rCheckID"></label>
-                                    <button type="button" class="btn btn-info" id="rCheckID">Check</button>
-                                </div>
+                        @if (empty($companies))
+                        @php
+                        $companies = (object)$companies;
+                            $companies->company_name = "";
+                            $companies->company_phone = "";
+                            $companies->center_qualify = "no";
+                            
+                        @endphp
+                            
+                        @endif
+                        <div class="col-md-3" id="centerNameText">
+                            <div class="form-group">
+                                <label for="rCPhone">Center Name</label>
+                                <input type="text" class="form-control" name="center_name" id="center_name_text"
+                                    aria-describedby="rCPhone" placeholder="센터 이름" value="{{ $companies->company_name }}">
+
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="rCPhone">Center Phone</label>
-                                <input type="text" class="form-control" value="{{$member->center_phone}}"
+                                <input type="text" class="form-control" value="{{$companies->company_phone}}"
                                     name="center_phone" id="center_phone" aria-describedby="rCPhone"
                                     placeholder="사업장(사무실) 전화번호)">
                             </div>
@@ -185,14 +182,14 @@
                             <br><br>
                             <div class="form-row">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="yes">
-                                    <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                    <input class="form-check-input" type="radio" name="center_qualify" id="inlineRadio1"
+                                        form-check-label" for="inlineRadio1" value="yes"
+                                        {{ old('center_qualify', $companies->center_qualify) === 'yes' ? 'checked' : '' }}>Yes</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="no">
-                                    <label class="form-check-label" for="inlineRadio2">No</label>
+                                    <input class="form-check-input" type="radio" name="center_qualify" id="inlineRadio2"
+                                        form-check-label" for="inlineRadio2" value="no"
+                                        {{ old('center_qualify', $companies->center_qualify) == 'no' ? 'checked' : '' }}>No</label>
                                 </div>
                             </div>
                         </div>
@@ -224,9 +221,9 @@
                     id: recruiter_id},
                 success: function (data) {
                     // console.log(data);
-                    
+
                         $('#recuriter_name').val(data.data[0].name);
-                    
+
                 }
             });
         });
@@ -246,18 +243,17 @@
                 id: sponsor_id
                 },
             success: function (data) {
-                
+
                 console.log(data.data[0].name);
                 if(data.count>=2) {
                 alert("Limit Reached !");
                 }else{
                 $('#sponsor_name').val(data.data[0].name);
                 }
-        
+
         }
         });
         });
-
         $('#center_name').change(function(e)
        {
            e.preventDefault();

@@ -76,15 +76,19 @@
                             </td>
                             <td>{{$member->sponsor_name}}
                             </td>
-                            <td>{{is_null($member->company) ? $member->center_name : $member->company->company_name}}
+                            <td>{{is_null($member->company) ? "" : $member->company->company_name}}
                             </td>
-                            <td>{{is_null($member->company) ? $member->center_phone : $member->company->company_phone}}
+                            <td>{{is_null($member->company) ? "" : $member->company->company_phone}}
                             </td>
                             <td>
-                                @if ($member->center_qualify == 'yes')
-                                Yes
+                                @if ($member->company)
+                                    @if ($member->company->center_qualify == 'yes')
+                                            {{"Yes"}}                                        
+                                    @else
+                                       {{ "No"}}
+                                    @endif
                                 @else
-                                No
+                                     {{ "No"}}
                                 @endif
                                 {{-- {{$member->center_qualify}} --}}
                             </td>
