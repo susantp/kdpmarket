@@ -28,7 +28,7 @@ class MembershipController extends Controller
     {
         // $members = Member::paginate(10);
         $members = Member::with('company')->get();
-        // return $members;
+        // dd( $members->company->center_name);
         return view('backend.membership.index', ['members' => $members, 'role' => 'admin']);
     }
 
@@ -152,7 +152,7 @@ class MembershipController extends Controller
         $member->email = $request->email;
         $member->rrn = $request->rrn;
         $member->deposit_name = $request->deposit_name;
-        // $member->deposit_date = $request->deposit_date;
+        $member->deposit_date = $request->deposit_date;
         $member->voucher_no = $request->voucher_no;
         $member->account_owner = $request->account_owner;
         $member->bank_name = $request->bank_name;
@@ -163,7 +163,12 @@ class MembershipController extends Controller
         $member->sponsor_name = $request->sponsor_name;
         $member->save();
 
-        $company =  new CompanyInfo();
+        $company = CompanyInfo::where('member_id',$id)->first();
+        if (empty($company)) {
+            $company = new CompanyInfo();
+        }
+        // dd($old_company);
+        // $company =  new CompanyInfo();
         $company->company_name = $request->center_name;
         $company->company_phone = $request->center_phone;
         $company->center_qualify = $request->center_qualify;
