@@ -19,6 +19,11 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Member List</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{route('centerList')}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Center List</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -64,9 +69,9 @@
         <div id="collapseCompany" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('companies.index')}}">List Centers</a>
-                <a class="collapse-item" href="{{route('companies.create')}}">Add New Center</a>
-            </div>
-        </div>
+    <a class="collapse-item" href="{{route('companies.create')}}">Add New Center</a>
+    </div>
+    </div>
 
     </li> --}}
 

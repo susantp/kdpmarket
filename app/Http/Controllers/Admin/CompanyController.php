@@ -22,6 +22,12 @@ class CompanyController extends Controller
         $this->middleware('auth');
     }
 
+    public function indexQualified()
+    {
+        $qCompanies = CompanyInfo::where('center_qualify', 'yes')->get();
+        // return $qCompanies;
+        return view('backend.company.index', ['companies' => $qCompanies, 'role' => 'admin']);
+    }
     public function index()
     {
         $companies = CompanyInfo::with('members')->get();
@@ -54,7 +60,7 @@ class CompanyController extends Controller
         $company->company_phone = $request->company_phone;
         $company->company_email = $request->company_email;
         $company->company_owner = $request->company_owner;
-        
+
         $company->save();
         return redirect()->route('companies.index', ['role' => 'admin', 'success' => 'Company created successfully.']);
     }
@@ -80,7 +86,7 @@ class CompanyController extends Controller
     {
         $company = CompanyInfo::find($id);
         $members = Member::select('name', 'id')->get();
-        return view('backend.company.edit', ['company' => $company, 'role' => 'admin','members'=>$members]);
+        return view('backend.company.edit', ['company' => $company, 'role' => 'admin', 'members' => $members]);
     }
 
     /**
@@ -98,7 +104,7 @@ class CompanyController extends Controller
         $company->company_phone = $request->company_phone;
         $company->company_email = $request->company_email;
         $company->company_owner = $request->company_owner;
-        
+
         $company->save();
         return redirect()->route('companies.index', ['role' => 'admin', 'success' => 'Company Updated successfully.']);
     }
