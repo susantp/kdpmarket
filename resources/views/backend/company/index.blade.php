@@ -8,7 +8,7 @@
             <!-- Grayscale Utilities -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Center List</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Qualified Center List</h6>
                 </div>
                 <div class="card-body">
                     {{-- <div class="">
@@ -19,22 +19,22 @@
                 <table class="table table-hover table-striped table-bordered  dataTable">
                     <tr>
                         <td>SN</td>
+                        <td>User ID</td>
+                        <td>Center Owner</td>
                         <td>Center Name</td>
                         <td>Center Phone</td>
                         {{-- <td>Center E-mail</td> --}}
-                        <td>Center Qualify</td>
                         {{-- <td>Action</td> --}}
 
                     </tr>
                     @foreach ($companies as $company)
                     <tr>
                         <td>{{$loop->index + 1}}</td>
+                        <td>{{$company->userID}}</td>
+                        <td>{{$company->name}}</td>
                         <td>{{$company->center_name}}
                         </td>
                         <td>{{$company->center_phone}}
-                        </td>
-                        <td>
-                            {{$company->center_qualify}}
                         </td>
                         {{-- <td>{{$company->company_email}}
                         </td> --}}

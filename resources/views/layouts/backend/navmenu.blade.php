@@ -16,13 +16,13 @@
     @if($role=="admin")
     <li class="nav-item active">
         <a class="nav-link" href="{{route('membership.index')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-users"></i>
             <span>Member List</span></a>
     </li>
     <li class="nav-item active">
         <a class="nav-link" href="{{route('centerList')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Center List</span></a>
+            <i class="fas fa-fw fa-list"></i>
+            <span>Qualified Center List</span></a>
     </li>
 
     <!-- Divider -->
