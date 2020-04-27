@@ -24,7 +24,7 @@ class CompanyController extends Controller
 
     public function indexQualified()
     {
-        $qCompanies = CompanyInfo::where('center_qualify', 'yes')->get();
+        $qCompanies = Member::select('center_name', 'center_phone', 'center_qualify')->where('center_qualify', 'yes')->get();
         // return $qCompanies;
         return view('backend.company.index', ['companies' => $qCompanies, 'role' => 'admin']);
     }

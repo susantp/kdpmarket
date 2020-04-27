@@ -76,21 +76,12 @@
                             </td>
                             <td>{{$member->sponsor_name}}
                             </td>
-                            <td>{{is_null($member->company) ? "" : $member->company->company_name}}
+                            <td>{{$member->center_name}}
                             </td>
-                            <td>{{is_null($member->company) ? "" : $member->company->company_phone}}
+                            <td>{{$member->center_phone}}
                             </td>
                             <td>
-                                @if ($member->company)
-                                    @if ($member->company->center_qualify == 'yes')
-                                            {{"Yes"}}                                        
-                                    @else
-                                       {{ "No"}}
-                                    @endif
-                                @else
-                                     {{ "No"}}
-                                @endif
-                                {{-- {{$member->center_qualify}} --}}
+                                {{$member->center_qualify}}
                             </td>
                             <td>
                                 <a class="btn btn-primary" href="{{ route('membership.edit',$member->id) }}">Edit</a>

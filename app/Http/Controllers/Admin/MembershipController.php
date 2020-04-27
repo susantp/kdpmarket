@@ -58,7 +58,8 @@ class MembershipController extends Controller
             'first_password_login' => 'required',
             'second_password_eWallet' => 'required',
         ]);
-        // dd($request);
+
+        // dd($request->all());
         $member = new Member();
         $member->userID = $request->userID;
         $member->name = $request->name;
@@ -78,25 +79,28 @@ class MembershipController extends Controller
         $member->recruiter_name = $request->recruiter_name;
         $member->sponsor_id = $request->sponsor_id;
         $member->sponsor_name = $request->sponsor_name;
+        $member->center_name = $request->center_name_text;
+        $member->center_phone = $request->center_phone;
+        $member->center_qualify = $request->center_qualify;
         $member->password = Hash::make($request->first_password_login);
         $member->second_password_eWallet = Hash::make($request->second_password_eWallet);
         $member->save();
 
-        if ($member) {
-            $company = new CompanyInfo();
-            $company->center_qualify = $request->center_qualify;
-            if ($request->center_qualify == 'yes') {
-                $company->company_name = $request->center_name;
-            } else {
-                $company->company_name = $request->center_name_text;
-            }
-            $company->company_phone = $request->center_phone;
-            $company->member_id = $member->id;
-            $company->save();
-        } else {
+        // if ($member) {
+        //     $company = new CompanyInfo();
+        //     $company->center_qualify = $request->center_qualify;
+        //     if ($request->center_qualify == 'yes') {
+        //         $company->company_name = $request->center_name;
+        //     } else {
+        //         $company->company_name = $request->center_name_text;
+        //     }
+        //     $company->company_phone = $request->center_phone;
+        //     $company->member_id = $member->id;
+        //     $company->save();
+        // } else {
 
-            return redirect()->route('membership.index', ['role' => 'admin', 'error' => 'Member Couldnot be created.']);
-        }
+        //     return redirect()->route('membership.index', ['role' => 'admin', 'error' => 'Member Couldnot be created.']);
+        // }
 
         // dd($member);
         return redirect()->route('membership.index', ['role' => 'admin', 'success' => 'Member created successfully.']);
@@ -161,19 +165,22 @@ class MembershipController extends Controller
         $member->recruiter_name = $request->recruiter_name;
         $member->sponsor_id = $request->sponsor_id;
         $member->sponsor_name = $request->sponsor_name;
+        $member->center_name = $request->center_name;
+        $member->center_phone = $request->center_phone;
+        $member->center_qualify = $request->center_qualify;
         $member->save();
 
-        $company = CompanyInfo::where('member_id',$id)->first();
-        if (empty($company)) {
-            $company = new CompanyInfo();
-        }
-        // dd($old_company);
-        // $company =  new CompanyInfo();
-        $company->company_name = $request->center_name;
-        $company->company_phone = $request->center_phone;
-        $company->center_qualify = $request->center_qualify;
-        $company->member_id = $id;
-        $company->save();
+        // $company = CompanyInfo::where('member_id', $id)->first();
+        // if (empty($company)) {
+        //     $company = new CompanyInfo();
+        // }
+        // // dd($old_company);
+        // // $company =  new CompanyInfo();
+        // $company->company_name = $request->center_name;
+        // $company->company_phone = $request->center_phone;
+        // $company->center_qualify = $request->center_qualify;
+        // $company->member_id = $id;
+        // $company->save();
 
 
         return redirect()->route('membership.index')

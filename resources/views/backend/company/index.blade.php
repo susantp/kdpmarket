@@ -21,37 +21,40 @@
                         <td>SN</td>
                         <td>Center Name</td>
                         <td>Center Phone</td>
-                        <td>Center E-mail</td>
-                        <td>Center Owner</td>
+                        {{-- <td>Center E-mail</td> --}}
+                        <td>Center Qualify</td>
                         {{-- <td>Action</td> --}}
 
                     </tr>
                     @foreach ($companies as $company)
                     <tr>
                         <td>{{$loop->index + 1}}</td>
-                        <td>{{$company->company_name}}
+                        <td>{{$company->center_name}}
                         </td>
-                        <td>{{$company->company_phone}}
-                        </td>
-                        <td>{{$company->company_email}}
+                        <td>{{$company->center_phone}}
                         </td>
                         <td>
+                            {{$company->center_qualify}}
+                        </td>
+                        {{-- <td>{{$company->company_email}}
+                        </td> --}}
+                        {{-- <td>
                             @if ($company->company_owner)
                             {{$company->members->name}}
-                            @else
-                               - 
-                            @endif
-                            
-                        </td>
-                       
+                        @else
+                        -
+                        @endif
+
+                        </td> --}}
+
                         {{-- <td>
                             <a class="btn btn-primary" href="{{ route('companies.edit',$company->id) }}">Edit</a>
-                            <a class="btn btn-info" href="{{ route('companyship.show',$company->id) }}">Show</a> 
-<form action="{{ route('companyship.destroy',$company->id) }}" method="POST">
+                        <a class="btn btn-info" href="{{ route('companyship.show',$company->id) }}">Show</a>
+                        <form action="{{ route('companyship.destroy',$company->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
+                        </form>
                         </td> --}}
                     </tr>
 

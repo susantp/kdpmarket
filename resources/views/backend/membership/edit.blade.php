@@ -151,28 +151,28 @@
                                     placeholder="스폰서(후원인) 이름">
                             </div>
                         </div>
-                        @if (empty($companies))
+                        {{-- @if (empty($companies))
                         @php
                         $companies = (object)$companies;
                             $companies->company_name = "";
                             $companies->company_phone = "";
                             $companies->center_qualify = "no";
-                            
+
                         @endphp
-                            
-                        @endif
+
+                        @endif --}}
                         <div class="col-md-3" id="centerNameText">
                             <div class="form-group">
                                 <label for="rCPhone">Center Name</label>
                                 <input type="text" class="form-control" name="center_name" id="center_name_text"
-                                    aria-describedby="rCPhone" placeholder="센터 이름" value="{{ $companies->company_name }}">
+                                    aria-describedby="rCPhone" placeholder="센터 이름" value="{{ $member->center_name }}">
 
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="rCPhone">Center Phone</label>
-                                <input type="text" class="form-control" value="{{$companies->company_phone}}"
+                                <input type="text" class="form-control" value="{{$member->center_phone}}"
                                     name="center_phone" id="center_phone" aria-describedby="rCPhone"
                                     placeholder="사업장(사무실) 전화번호)">
                             </div>
@@ -184,12 +184,12 @@
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="center_qualify" id="inlineRadio1"
                                         form-check-label" for="inlineRadio1" value="yes"
-                                        {{ old('center_qualify', $companies->center_qualify) === 'yes' ? 'checked' : '' }}>Yes</label>
+                                        {{ old('center_qualify', $member->center_qualify) === 'yes' ? 'checked' : '' }}>Yes</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="center_qualify" id="inlineRadio2"
                                         form-check-label" for="inlineRadio2" value="no"
-                                        {{ old('center_qualify', $companies->center_qualify) == 'no' ? 'checked' : '' }}>No</label>
+                                        {{ old('center_qualify', $member->center_qualify) == 'no' ? 'checked' : '' }}>No</label>
                                 </div>
                             </div>
                         </div>
