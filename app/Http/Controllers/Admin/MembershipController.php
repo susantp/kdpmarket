@@ -40,7 +40,8 @@ class MembershipController extends Controller
     public function create()
     {
 
-        $companies = CompanyInfo::select('company_name', 'company_phone')->get();
+        $companies = Member::select('center_name', 'center_phone')->distinct('id')->where('center_qualify', 'yes')->get();
+        // return $companies;
         return view('backend.membership.create', ['role' => 'admin', 'companies' => $companies]);
     }
 
@@ -79,7 +80,11 @@ class MembershipController extends Controller
         $member->recruiter_name = $request->recruiter_name;
         $member->sponsor_id = $request->sponsor_id;
         $member->sponsor_name = $request->sponsor_name;
-        $member->center_name = $request->center_name_text;
+        if ($request->center_qualify == 'no') {
+            $member->center_name = $request->center_name_text;
+        } else {
+            $member->center_name = $request->center_name_select;
+        }
         $member->center_phone = $request->center_phone;
         $member->center_qualify = $request->center_qualify;
         $member->password = Hash::make($request->first_password_login);

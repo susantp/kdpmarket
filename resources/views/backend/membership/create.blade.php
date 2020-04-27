@@ -181,64 +181,68 @@
                                         value="{{ old('center_phone') }}">
                                 </div>
                             </div>
-                            {{-- <div class="col-md-3" id="centerNameSelect" hidden>
+                            <div class="col-md-3" id="centerNameSelect" hidden>
                                 <div class="form-row">
                                     <div class="col-md-9">
                                         <div class="form-group">
                                             <label for="center_name">Center Name</label>
                                             <select name="center_name_select" id="center_name" class="form-control"
                                                 value="{{ old('center_name') }}">
-                            <option>select</option>
-                            @foreach ($companies as $company)
-                            <option value="{{$company->company_name}}" data-phone="{{$company->company_phone}}">
-                                {{$company->company_name}}
-                            </option>
-                            @endforeach
-                            </select>
-                            <input type="text" class="form-control" name="center_name" id="center_name"
-                                aria-describedby="center_name" placeholder="회원 ID (6자리이상)">
+                                                <option>select</option>
+                                                @foreach ($companies as $company)
+                                                <option value="{{$company->center_name}}"
+                                                    data-phone="{{$company->center_phone}}">
+                                                    {{$company->center_name}}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            {{-- <input type="text" class="form-control" name="center_name" id="center_name"
+                                                aria-describedby="center_name" placeholder="회원 ID (6자리이상)"> --}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="rCheckID"></label>
+                                        <button type="button" class="btn btn-info" id="rCheckID">Check</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="rCPhone">Center Phone</label>
+                                    <input type="text" class="form-control" name="center_phone" id="center_phone"
+                                        aria-describedby="rCPhone" placeholder="사업장(사무실) 전화번호)"
+                                        value="{{ old('center_phone') }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="firstPasswordLogin">1st Password (Login)</label>
+                                    <input type="text" class="form-control" name="first_password_login"
+                                        id="first_password_login" aria-describedby="first_password"
+                                        placeholder="1st Password (Login)" value="{{ old('first_password_login') }}">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="firstPasswordLogin">2nd Password (E-wallet)</label>
+                                    <input type="text" class="form-control" name="second_password_eWallet"
+                                        id="second_password_eWallet" aria-describedby="second_password"
+                                        placeholder="2nd Password (E-wallet)"
+                                        value="{{ old('second_password_eWallet') }}">
+                                </div>
+                            </div>
+                            <!-- end of row -->
                         </div>
+                        <hr>
+                        <button type="submit" class="btn btn-primary">Submit <i
+                                class="fa fa-fw fa-paper-plane"></i></button>
+                    </form>
                 </div>
-                <div class="col-md-3">
-                    <label for="rCheckID"></label>
-                    <button type="button" class="btn btn-info" id="rCheckID">Check</button>
-                </div>
-            </div>
-        </div> --}}
-
-        <div class="col-md-3">
-            <div class="form-group">
-                <label for="rCPhone">Center Phone</label>
-                <input type="text" class="form-control" name="center_phone" id="center_phone" aria-describedby="rCPhone"
-                    placeholder="사업장(사무실) 전화번호)" value="{{ old('center_phone') }}">
             </div>
         </div>
-
-        <div class="col-md-3">
-            <div class="form-group">
-                <label for="firstPasswordLogin">1st Password (Login)</label>
-                <input type="text" class="form-control" name="first_password_login" id="first_password_login"
-                    aria-describedby="first_password" placeholder="1st Password (Login)"
-                    value="{{ old('first_password_login') }}">
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="form-group">
-                <label for="firstPasswordLogin">2nd Password (E-wallet)</label>
-                <input type="text" class="form-control" name="second_password_eWallet" id="second_password_eWallet"
-                    aria-describedby="second_password" placeholder="2nd Password (E-wallet)"
-                    value="{{ old('second_password_eWallet') }}">
-            </div>
-        </div>
-        <!-- end of row -->
     </div>
-    <hr>
-    <button type="submit" class="btn btn-primary">Submit <i class="fa fa-fw fa-paper-plane"></i></button>
-    </form>
-</div>
-</div>
-</div>
-</div>
 </div>
 <!-- /.container-fluid -->
 
@@ -299,25 +303,25 @@
 
     });
 
-//     $('#memberRegistrationForm input').on('change', function() {
-//    var checkStatus = $('input[name=center_qualify]:checked', '#memberRegistrationForm').val();
+    $('#memberRegistrationForm input').on('change', function() {
+   var checkStatus = $('input[name=center_qualify]:checked', '#memberRegistrationForm').val();
 
-//    if(checkStatus == 'yes')
-//    {
-//     $('#centerNameSelect').removeAttr('hidden');
-//     $('#centerNameSelect').show();
-//     $('#centerNameText').hide();
-//     $("#center_name_text").val("");
-//     $("#center_phone").val("");
+   if(checkStatus == 'yes')
+   {
+    $('#centerNameSelect').removeAttr('hidden');
+    $('#centerNameSelect').show();
+    $('#centerNameText').hide();
+    $("#center_name_text").val("");
+    $("#center_phone").val("");
 
-//    }
-//    else{
-//     $('#centerNameSelect').hide();
-//     $('#centerNameText').show();
-//     // $("#center_phone").val("");
-//     $('#center_name').val("");
-//    }
-// });
+   }
+   else{
+    $('#centerNameSelect').hide();
+    $('#centerNameText').show();
+    // $("#center_phone").val("");
+    $('#center_name').val("");
+   }
+});
 
 
 </script>
