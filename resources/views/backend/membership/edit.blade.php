@@ -158,7 +158,7 @@
                                         <label for="center_name">Center Name</label>
                                         <select name="center_name_select" id="center_name" class="form-control"
                                             value="{{ old('center_name') }}">
-                                            <option>select</option>
+                                            <option>Select Center</option>
                                             @foreach ($companies as $company)
                                             <option value="{{$company->center_name}}"
                                                 data-phone="{{$company->center_phone}}">
