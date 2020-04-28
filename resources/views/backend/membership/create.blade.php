@@ -137,7 +137,7 @@
                                 <div class="form-row">
                                     <div class="col-md-9">
                                         <div class="form-group">
-                                            {{-- <label for="rSPID" class="labelHighlight">Sponsor ID</label> --}}
+                                            <label for="rSPID" class="labelHighlight">Sponsor ID</label>
                                             <input type="text" class="form-control" name="sponsor_id" id="sponsor_id"
                                                 aria-describedby="rSPID" placeholder="스폰서(후원인) ID"
                                                 value="{{ old('sponsor_id') }}">
@@ -157,31 +157,9 @@
                                         value="{{ old('sponsor_name') }}">
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <label>Center Qualify</label>
-                                <br><br>
-                                <div class="form-row">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="center_qualify"
-                                            id="inlineRadio1" form-check-label" for="inlineRadio1"
-                                            value="yes">Yes</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="center_qualify"
-                                            id="inlineRadio2" form-check-label" for="inlineRadio2" value="no"
-                                            checked="checked">No</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3" id="centerNameText">
-                                <div class="form-group">
-                                    <label for="rCPhone">Center Name</label>
-                                    <input type="text" class="form-control" name="center_name_text"
-                                        id="center_name_text" aria-describedby="rCPhone" placeholder="센터 이름"
-                                        value="{{ old('center_phone') }}">
-                                </div>
-                            </div>
-                            <div class="col-md-3" id="centerNameSelect" hidden>
+                           
+                            
+                            <div class="col-md-3" id="centerNameSelect">
                                 <div class="form-row">
                                     <div class="col-md-9">
                                         <div class="form-group">
@@ -200,13 +178,16 @@
                                                 aria-describedby="center_name" placeholder="회원 ID (6자리이상)"> --}}
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="rCheckID"></label>
-                                        <button type="button" class="btn btn-info" id="rCheckID">Check</button>
-                                    </div>
                                 </div>
                             </div>
-
+                            <div class="col-md-3" id="centerNameText">
+                                <div class="form-group">
+                                    <label for="rCPhone">Center Name</label>
+                                    <input type="text" class="form-control" name="center_name_text"
+                                        id="center_name_text" aria-describedby="rCPhone" placeholder="센터 이름"
+                                        value="{{ old('center_phone') }}">
+                                </div>
+                            </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="rCPhone">Center Phone</label>
@@ -215,7 +196,22 @@
                                         value="{{ old('center_phone') }}">
                                 </div>
                             </div>
-
+                            <div class="col-md-3">
+                                <label>Center Qualify</label>
+                                <br><br>
+                                <div class="form-row">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="center_qualify"
+                                            id="inlineRadio1" form-check-label" for="inlineRadio1"
+                                            value="yes">Yes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="center_qualify"
+                                            id="inlineRadio2" form-check-label" for="inlineRadio2" value="no"
+                                            checked="checked">No</label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="firstPasswordLogin">1st Password (Login)</label>
@@ -295,33 +291,35 @@
        {
            e.preventDefault();
                 var company_phone = $(this).find(':selected').data('phone');
+                var company_name = $(this).find(':selected').val();
                 $('#center_phone').val(company_phone);
-                // alert(com_ph);
+                $('#center_name_text').val(company_name);
+                // alert(company_name);
        });
 
 
 
     });
 
-    $('#memberRegistrationForm input').on('change', function() {
-   var checkStatus = $('input[name=center_qualify]:checked', '#memberRegistrationForm').val();
+//     $('#memberRegistrationForm input').on('change', function() {
+//    var checkStatus = $('input[name=center_qualify]:checked', '#memberRegistrationForm').val();
 
-   if(checkStatus == 'yes')
-   {
-    $('#centerNameSelect').removeAttr('hidden');
-    $('#centerNameSelect').show();
-    $('#centerNameText').hide();
-    $("#center_name_text").val("");
-    $("#center_phone").val("");
+//    if(checkStatus == 'yes')
+//    {
+//     $('#centerNameSelect').removeAttr('hidden');
+//     $('#centerNameSelect').show();
+//     $('#centerNameText').hide();
+//     $("#center_name_text").val("");
+//     $("#center_phone").val("");
 
-   }
-   else{
-    $('#centerNameSelect').hide();
-    $('#centerNameText').show();
-    // $("#center_phone").val("");
-    $('#center_name').val("");
-   }
-});
+//    }
+//    else{
+//     $('#centerNameSelect').hide();
+//     $('#centerNameText').show();
+//     // $("#center_phone").val("");
+//     $('#center_name').val("");
+//    }
+// });
 
 
 </script>
