@@ -40,7 +40,7 @@ class MembershipController extends Controller
     public function create()
     {
 
-        $companies = Member::select('center_name', 'center_phone')->distinct('id')->where('center_qualify', 'yes')->get();
+        $companies = Member::select('center_name', 'center_phone')->distinct('id')->get();
         // return $companies;
         return view('backend.membership.create', ['role' => 'admin', 'companies' => $companies]);
     }
@@ -60,7 +60,7 @@ class MembershipController extends Controller
             'second_password_eWallet' => 'required',
         ]);
 
-        // dd($request->all());
+        dd($request->all());
         $member = new Member();
         $member->userID = $request->userID;
         $member->name = $request->name;
@@ -80,11 +80,8 @@ class MembershipController extends Controller
         $member->recruiter_name = $request->recruiter_name;
         $member->sponsor_id = $request->sponsor_id;
         $member->sponsor_name = $request->sponsor_name;
-        if ($request->center_qualify == 'no') {
-            $member->center_name = $request->center_name_text;
-        } else {
-            $member->center_name = $request->center_name_select;
-        }
+        $member->center_name = $request->center_name_text;
+        // $member->center_name = $request->center_name_select;
         $member->center_phone = $request->center_phone;
         $member->center_qualify = $request->center_qualify;
         $member->password = Hash::make($request->first_password_login);
@@ -132,7 +129,9 @@ class MembershipController extends Controller
     public function edit($id)
     {
         $member = Member::find($id);
-        $companies = CompanyInfo::where('member_id', $id)->first();
+        // $companies = CompanyInfo::where('member_id', $id)->first();
+        $companies = Member::select('center_name', 'center_phone')->distinct('id')->get();
+
         // dd($companies);
         // $companies = CompanyInfo::select('company_name', 'company_phone')->get();
         return view('backend.membership.edit', ['member' => $member, 'role' => 'admin', 'companies' => $companies]);

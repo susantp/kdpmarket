@@ -151,16 +151,27 @@
                                     placeholder="스폰서(후원인) 이름">
                             </div>
                         </div>
-                        {{-- @if (empty($companies))
-                        @php
-                        $companies = (object)$companies;
-                            $companies->company_name = "";
-                            $companies->company_phone = "";
-                            $companies->center_qualify = "no";
-
-                        @endphp
-
-                        @endif --}}
+                        <div class="col-md-3" id="centerNameSelect">
+                            <div class="form-row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label for="center_name">Center Name</label>
+                                        <select name="center_name_select" id="center_name" class="form-control"
+                                            value="{{ old('center_name') }}">
+                                            <option>select</option>
+                                            @foreach ($companies as $company)
+                                            <option value="{{$company->center_name}}"
+                                                data-phone="{{$company->center_phone}}">
+                                                {{$company->center_name}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                        {{-- <input type="text" class="form-control" name="center_name" id="center_name"
+                                            aria-describedby="center_name" placeholder="회원 ID (6자리이상)"> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-3" id="centerNameText">
                             <div class="form-group">
                                 <label for="rCPhone">Center Name</label>
@@ -257,8 +268,10 @@
         $('#center_name').change(function(e)
        {
            e.preventDefault();
-                var company_phone = $(this).find(':selected').data('phone');
+           var company_phone = $(this).find(':selected').data('phone');
+                var company_name = $(this).find(':selected').val();
                 $('#center_phone').val(company_phone);
+                $('#center_name_text').val(company_name);
                 // alert(com_ph);
        });
     });

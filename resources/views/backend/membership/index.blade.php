@@ -81,7 +81,12 @@
                             <td>{{$member->center_phone}}
                             </td>
                             <td>
-                                {{$member->center_qualify}}
+                                @if ($member->center_qualify == 'yes')
+                                    {{'YES'}}
+                                @else
+                                    {{'No'}}
+                                @endif
+                                {{-- {{$member->center_qualify}} --}}
                             </td>
                             <td>
                                 <a class="btn btn-primary" href="{{ route('membership.edit',$member->id) }}">Edit</a>
