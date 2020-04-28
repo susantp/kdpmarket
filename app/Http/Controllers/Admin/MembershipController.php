@@ -60,7 +60,7 @@ class MembershipController extends Controller
             'second_password_eWallet' => 'required',
         ]);
 
-        dd($request->all());
+        // dd($request->all());
         $member = new Member();
         $member->userID = $request->userID;
         $member->name = $request->name;
