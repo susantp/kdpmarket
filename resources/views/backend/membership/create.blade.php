@@ -168,9 +168,9 @@
                                                 value="{{ old('center_name') }}">
                                                 <option>Select Center</option>
                                                 @foreach ($companies as $company)
-                                                <option value="{{$company->center_name}}"
-                                                    data-phone="{{$company->center_phone}}">
-                                                    {{$company->center_name}}
+                                                <option value="{{$company->id}}"
+                                                    data-phone="{{$company->phone}}">
+                                                    {{$company->name}}&nbsp;({{$company->userID}})
                                                 </option>
                                                 @endforeach
                                             </select>
@@ -180,14 +180,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3" id="centerNameText">
+                            {{-- <div class="col-md-3" id="centerNameText">
                                 <div class="form-group">
                                     <label for="rCPhone">Center Name</label>
                                     <input type="text" class="form-control" name="center_name_text"
                                         id="center_name_text" aria-describedby="rCPhone" placeholder="센터 이름"
                                         value="{{ old('center_phone') }}">
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="rCPhone">Center Phone</label>

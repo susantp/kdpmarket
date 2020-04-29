@@ -27,8 +27,8 @@ class MembershipController extends Controller
     public function index()
     {
         // $members = Member::paginate(10);
-        $members = Member::with('company')->get();
-        // dd( $members->company->center_name);
+        $members = Member::all();
+        // dd( $members);
         return view('backend.membership.index', ['members' => $members, 'role' => 'admin']);
     }
 
@@ -40,8 +40,8 @@ class MembershipController extends Controller
     public function create()
     {
 
-        $companies = Member::select('center_name', 'center_phone')->distinct('id')->get();
-        // return $companies;
+        $companies = Member::select('id','userID', 'name','phone')->distinct('userID')->get();
+        // dd( $companies);
         return view('backend.membership.create', ['role' => 'admin', 'companies' => $companies]);
     }
 
@@ -80,8 +80,8 @@ class MembershipController extends Controller
         $member->recruiter_name = $request->recruiter_name;
         $member->sponsor_id = $request->sponsor_id;
         $member->sponsor_name = $request->sponsor_name;
-        $member->center_name = $request->center_name_text;
-        // $member->center_name = $request->center_name_select;
+        // $member->center_name = $request->center_name_text;
+        $member->center_name = $request->center_name_select;
         $member->center_phone = $request->center_phone;
         $member->center_qualify = $request->center_qualify;
         $member->password = Hash::make($request->first_password_login);
@@ -130,7 +130,7 @@ class MembershipController extends Controller
     {
         $member = Member::find($id);
         // $companies = CompanyInfo::where('member_id', $id)->first();
-        $companies = Member::select('center_name', 'center_phone')->distinct('id')->get();
+        $companies = Member::select('id','userID', 'name','phone')->distinct('userID')->get();
 
         // dd($companies);
         // $companies = CompanyInfo::select('company_name', 'company_phone')->get();
@@ -169,7 +169,7 @@ class MembershipController extends Controller
         $member->recruiter_name = $request->recruiter_name;
         $member->sponsor_id = $request->sponsor_id;
         $member->sponsor_name = $request->sponsor_name;
-        $member->center_name = $request->center_name;
+        $member->center_name = $request->center_name_select;
         $member->center_phone = $request->center_phone;
         $member->center_qualify = $request->center_qualify;
         $member->save();
