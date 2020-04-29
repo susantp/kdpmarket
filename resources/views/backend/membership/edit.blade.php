@@ -159,12 +159,12 @@
                                         <select name="center_name_select" id="center_name" class="form-control"
                                             value="{{ old('center_name') }}">
                                             <option>Select Center</option>
-                                            @foreach ($companies as $company)
-                                            <option value="{{$company->center_name}}"
-                                                data-phone="{{$company->center_phone}}">
-                                                {{$company->center_name}}
-                                            </option>
-                                            @endforeach
+                                                @foreach ($companies as $company)
+                                                <option value="{{$company->id}}"
+                                                    data-phone="{{$company->phone}}" {{ $company->id == $member->center_name ? 'selected="selected"' : '' }}>
+                                                    {{$company->name}}&nbsp;({{$company->userID}})
+                                                </option>
+                                                @endforeach
                                         </select>
                                         {{-- <input type="text" class="form-control" name="center_name" id="center_name"
                                             aria-describedby="center_name" placeholder="회원 ID (6자리이상)"> --}}
@@ -172,14 +172,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3" id="centerNameText">
+                        {{-- <div class="col-md-3" id="centerNameText">
                             <div class="form-group">
                                 <label for="rCPhone">Center Name</label>
                                 <input type="text" class="form-control" name="center_name" id="center_name_text"
                                     aria-describedby="rCPhone" placeholder="센터 이름" value="{{ $member->center_name }}">
 
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="rCPhone">Center Phone</label>

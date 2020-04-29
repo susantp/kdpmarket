@@ -21,7 +21,7 @@ class MemberController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $member = Member::where('id',$id)->with('company')->first();
+        $member = Member::where('id',$id)->first();
         // dd($member);
         return view('member.dashboard', ['member' => $member, 'role' => 'member']);
         // return view('member.dashboard')->with('role', 'member');
@@ -30,7 +30,8 @@ class MemberController extends Controller
     public function edit($id)
     {
         $member = Member::find($id);
-        $companies = CompanyInfo::where('member_id', $id)->first();
+        // $companies = CompanyInfo::where('member_id', $id)->first();
+        $companies = Member::select('id','userID', 'name','phone')->distinct('userID')->get();
         return view('member.edit', ['member' => $member, 'role' => 'member', 'companies' => $companies]);
     }
 
@@ -39,8 +40,6 @@ class MemberController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
-        $member = Member::find($id);
-
         // $member->update($request->all());
         $member = Member::find($id);
         $member->name = $request->name;
@@ -57,19 +56,14 @@ class MemberController extends Controller
         $member->recruiter_name = $request->recruiter_name;
         $member->sponsor_id = $request->sponsor_id;
         $member->sponsor_name = $request->sponsor_name;
+        $member->center_name = $request->center_name_select;
+        $member->center_phone = $request->center_phone;
+        $member->center_qualify = $request->center_qualify;
+        
         $member->save();
 
-        $company = CompanyInfo::where('member_id',$id)->first();
-        if (empty($company)) {
-            $company = new CompanyInfo();
-        }
-        // dd($old_company);
-        // $company =  new CompanyInfo();
-        $company->company_name = $request->center_name;
-        $company->company_phone = $request->center_phone;
-        $company->center_qualify = $request->center_qualify;
-        $company->member_id = $id;
-        $company->save();
+        
+        
         return redirect()->route('member.dashboard')
             ->with('success', 'Member updated successfully');
     }

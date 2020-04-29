@@ -54,20 +54,22 @@
         </td>
         <td>{{$member->sponsor_name}}
         </td>
-        <td>{{is_null($member->company) ? "" : $member->company->company_name}}
+        <td>
+            @php
+                $center = App\Member::select('name','userID')->where('id',$member->center_name)->first();
+            @endphp
+            {{$center->name}}-{{$center->userID}}
         </td>
-        <td>{{is_null($member->company) ? "" : $member->company->company_phone}}
+        <td>{{$member->center_phone}}
         </td>
         <td>
-            @if ($member->company)
-                @if ($member->company->center_qualify == 'yes')
+            
+                @if ($member->center_qualify == 'yes')
                         {{"Yes"}}                                        
                 @else
                    {{ "No"}}
                 @endif
-            @else
-                 {{ "No"}}
-            @endif
+           
             {{-- {{$member->center_qualify}} --}}
         </td>
 

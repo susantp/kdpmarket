@@ -76,7 +76,12 @@
                             </td>
                             <td>{{$member->sponsor_name}}
                             </td>
-                            <td>{{$member->center_name}}
+                            <td>
+                                @php
+                                    $center = App\Member::select('name','userID')->where('id',$member->center_name)->first();
+                                    // dd($center['name']);
+                                @endphp
+                                {{$center['name']}}-{{$center['userID']}}
                             </td>
                             <td>{{$member->center_phone}}
                             </td>
