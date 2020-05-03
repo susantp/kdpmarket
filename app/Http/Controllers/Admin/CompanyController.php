@@ -31,7 +31,8 @@ class CompanyController extends Controller
 
     public function indexBonusList()
     {
-        return "yes";
+        $members = Member::all();
+        return view('backend.company.bonusindex', ['members' => $members, 'role' => 'admin']);
     }
     public function index()
     {

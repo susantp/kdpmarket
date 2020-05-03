@@ -24,6 +24,11 @@
             <i class="fas fa-fw fa-list"></i>
             <span>Qualified Center List</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{route('bonusList')}}">
+            <i class="fas fa-fw fa-list"></i>
+            <span>Bonus List</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
