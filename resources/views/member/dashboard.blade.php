@@ -56,20 +56,20 @@
         </td>
         <td>
             @php
-                $center = App\Member::select('name','userID')->where('id',$member->center_name)->first();
+            $center = App\Member::select('name','userID')->where('id',$member->center_name)->first();
             @endphp
-            {{$center->name}}-{{$center->userID}}
+            {{$center->name ?? '' }}-{{$center->userID ?? ''}}
         </td>
         <td>{{$member->center_phone}}
         </td>
         <td>
-            
-                @if ($member->center_qualify == 'yes')
-                        {{"Yes"}}                                        
-                @else
-                   {{ "No"}}
-                @endif
-           
+
+            @if ($member->center_qualify == 'yes')
+            {{"Yes"}}
+            @else
+            {{ "No"}}
+            @endif
+
             {{-- {{$member->center_qualify}} --}}
         </td>
 
