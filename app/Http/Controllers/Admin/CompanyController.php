@@ -28,6 +28,11 @@ class CompanyController extends Controller
         // return $qCompanies;
         return view('backend.company.index', ['companies' => $qCompanies, 'role' => 'admin']);
     }
+
+    public function indexBonusList()
+    {
+        return "yes";
+    }
     public function index()
     {
         $companies = CompanyInfo::with('members')->get();

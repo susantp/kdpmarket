@@ -28,6 +28,8 @@ Route::post('checkUserID', 'Admin\MembershipController@checkUserID')->name('chec
 Route::post('checkRecruiterAjax', 'Admin\MembershipController@checkRecruiterInfo')->name('checkRecruiterInfo');
 
 Route::get('center', 'Admin\CompanyController@indexQualified')->name('centerList');
+Route::get('bonusList', 'Admin\CompanyController@indexBonusList')->name('bonuslist');
+
 Route::get('sponsor', function () {
     return view('backend.chart', ['role' => 'admin']);
 })->name('sponsorchart');
