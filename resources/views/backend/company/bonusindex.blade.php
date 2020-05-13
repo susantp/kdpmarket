@@ -32,7 +32,7 @@
                             <td>Center Name</td>
                             <td>A Line</td>
                             <td>B Line</td>
-                            <td>Up Time</td>
+                            <td>Up Line</td>
                             <td>Bonus Date</td>
 
                         </tr>
