@@ -35,23 +35,68 @@
       _token: "{{ csrf_token() }}"
     },
     success: function(data) {
-      // console.log(data);
       var nodes = data;
+      // console.log(nodes[0]);
       for (var i = 0; i < nodes.length; i++) {
         nodes[i].field_number_children = childCount(nodes[i].id);
+        nodes[i].field_number_children_left = leftChildCount(nodes[i].id);
+        nodes[i].field_number_children_right = rightChildCount(nodes[i].id);
       }
 
       function childCount(id) {
         let count = 0;
         for (var i = 0; i < nodes.length; i++) {
           if (nodes[i].pid == id) {
-          console.log(nodes);
             count++;
             count += childCount(nodes[i].id);
           }
         }
         return count;
       }
+      function leftChildCount(id) {
+        let leftChildCount = 0;
+        let leftChildNodeid = null
+        for (var i = 0; i < nodes.length; i++) {
+            if (nodes[i].pid == id) {
+                leftChildNodeid = nodes[i].id ;
+                break;
+            }
+        }
+        
+
+        if(leftChildNodeid != null){
+          leftChildCount = childCount(leftChildNodeid);
+        }
+          
+        	if(leftChildNodeid == null){
+          	return 0;
+          }else{
+          	return leftChildCount+ 1;
+          }
+          
+    }
+    
+    function rightChildCount(id) {
+        let rightChildCount = 0;
+        let rightChildNodeid = null
+        for (var i = 0; i < nodes.length; i++) {
+            if (nodes[i].pid == id) {
+                rightChildNodeid = nodes[i].id ;
+                continue;
+            }
+        }
+        
+
+        if(rightChildNodeid != null){
+          rightChildCount = childCount(rightChildNodeid);
+        }
+          
+        	if(rightChildNodeid == null){
+          	return 0;
+          }else{
+          	return rightChildCount+ 1;
+          }
+    }
       OrgChart.templates.rony.field_number_children =
         '<circle cx="60" cy="110" r="15" fill="#F57C00"></circle><text fill="#ffffff" x="60" y="115" text-anchor="middle">{val}</text>';
 

@@ -19,7 +19,7 @@ class CreateCompaniesInfoTable extends Migration
             $table->string('company_phone')->nullable();
             $table->string('company_email')->nullable();
             $table->string('company_owner')->nullable();
-            $table->string('password')->nullable();
+            $table->string('center_qualify')->nullable();
             $table->timestamps();
         });
     }

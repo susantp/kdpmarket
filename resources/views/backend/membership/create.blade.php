@@ -157,7 +157,22 @@
                                         value="{{ old('sponsor_name') }}">
                                 </div>
                             </div>
-                           
+                            <div class="col-md-3">
+                                <label>Choose Side(Bonus)</label>
+                                <br><br>
+                                <div class="form-row">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="recruiter_bonus"
+                                            id="inlineRadio1" form-check-label" for="inlineRadio1"
+                                            value="recruiter_left">Left</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="recruiter_bonus"
+                                            id="inlineRadio2" form-check-label" for="inlineRadio2" value="recruiter_right"
+                                            >Right</label>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <div class="col-md-3" id="centerNameSelect">
                                 <div class="form-row">

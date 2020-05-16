@@ -65,9 +65,6 @@ class MembershipController extends Controller
         $member->userID = $request->userID;
         $member->name = $request->name;
         $member->phone = $request->phone;
-        if (empty($request->email)) {
-            $request->email = '-';
-        }
         $member->email = $request->email;
         $member->rrn = $request->rrn;
         $member->deposit_name = $request->deposit_name;
@@ -88,21 +85,27 @@ class MembershipController extends Controller
         $member->second_password_eWallet = Hash::make($request->second_password_eWallet);
         $member->save();
 
-        // if ($member) {
-        //     $company = new CompanyInfo();
-        //     $company->center_qualify = $request->center_qualify;
-        //     if ($request->center_qualify == 'yes') {
-        //         $company->company_name = $request->center_name;
-        //     } else {
-        //         $company->company_name = $request->center_name_text;
-        //     }
-        //     $company->company_phone = $request->center_phone;
-        //     $company->member_id = $member->id;
-        //     $company->save();
-        // } else {
+        if ($member) {
+            $recruiter = new SponsorRecruiter();
+            $recruiter->member_id = $member->id;
+            $recruiter->userID = $member->userID;
+            $recruiter->sponsor_id = $member->sponsor_id;
+            $recruiter->recruiter_id = $member->recruiter_id;
+            if ($request->recruiter_bonus == 'recruiter_left') {
+                $recruiter->recruiter_left = 1;
+                $recruiter->recruiter_right = 0;
+            }
+            if ($request->recruiter_bonus == 'recruiter_right') {
+                $recruiter->recruiter_right = 1;
+                $recruiter->recruiter_left = 0;
+            }
+            $recruiter->status = 'no';
+            
+            $recruiter->save();
+        } else {
 
-        //     return redirect()->route('membership.index', ['role' => 'admin', 'error' => 'Member Couldnot be created.']);
-        // }
+            return redirect()->route('membership.index', ['role' => 'admin', 'error' => 'Member Couldnot be created.']);
+        }
 
         // dd($member);
         return redirect()->route('membership.index', ['role' => 'admin', 'success' => 'Member created successfully.']);
@@ -129,12 +132,12 @@ class MembershipController extends Controller
     public function edit($id)
     {
         $member = Member::find($id);
-        // $companies = CompanyInfo::where('member_id', $id)->first();
+        $sponsorRecruiter = SponsorRecruiter::where('member_id', $id)->first();
         $companies = Member::select('id','userID', 'name','phone')->distinct('userID')->get();
 
-        // dd($companies);
+        // dd($sponsorRecruiter);
         // $companies = CompanyInfo::select('company_name', 'company_phone')->get();
-        return view('backend.membership.edit', ['member' => $member, 'role' => 'admin', 'companies' => $companies]);
+        return view('backend.membership.edit', ['member' => $member, 'role' => 'admin', 'companies' => $companies,'sponsorRecruiter' => $sponsorRecruiter]);
     }
 
     /**
@@ -174,17 +177,20 @@ class MembershipController extends Controller
         $member->center_qualify = $request->center_qualify;
         $member->save();
 
-        // $company = CompanyInfo::where('member_id', $id)->first();
-        // if (empty($company)) {
-        //     $company = new CompanyInfo();
-        // }
-        // // dd($old_company);
-        // // $company =  new CompanyInfo();
-        // $company->company_name = $request->center_name;
-        // $company->company_phone = $request->center_phone;
-        // $company->center_qualify = $request->center_qualify;
-        // $company->member_id = $id;
-        // $company->save();
+        $recruiter = SponsorRecruiter::where('member_id', $id)->first();;
+        $recruiter->sponsor_id = $member->sponsor_id;
+        $recruiter->recruiter_id = $member->recruiter_id;
+        if ($request->recruiter_bonus == 'recruiter_left') {
+            $recruiter->recruiter_left = 1;
+            $recruiter->recruiter_right = 0;
+        }
+        if ($request->recruiter_bonus == 'recruiter_right') {
+            $recruiter->recruiter_right = 1;
+            $recruiter->recruiter_left = 0;
+        }
+        // $recruiter->status = 'no';
+        
+        $recruiter->save();
 
 
         return redirect()->route('membership.index')
