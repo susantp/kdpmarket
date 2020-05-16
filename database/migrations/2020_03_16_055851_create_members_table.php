@@ -14,14 +14,14 @@ class CreateMembersTable extends Migration
     public function up()
     {
         Schema::create('members', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('userID');
-            $table->string('name');
+            $table->id();
+            $table->string('userID')->unique();
+            $table->string('name')->nullable();
             $table->string('phone')->nullable();
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('rrn')->nullable();
             $table->string('deposit_name')->nullable();
-            $table->date('deposit_date')->nullable();
+            $table->dateTime('deposit_date')->nullable();
             $table->string('voucher_no')->nullable();
             $table->string('account_owner')->nullable();
             $table->string('bank_name')->nullable();
@@ -32,6 +32,9 @@ class CreateMembersTable extends Migration
             $table->string('sponsor_name')->nullable();
             $table->string('center_name')->nullable();
             $table->string('center_phone')->nullable();
+            $table->set('center_qualify', ['yes', 'no']);
+            $table->string('password')->nullable();
+            $table->string('second_password_eWallet')->nullable();
             $table->timestamps();
         });
     }

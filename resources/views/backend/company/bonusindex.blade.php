@@ -67,8 +67,19 @@
                                 @endphp
                                 {{ $center['name'] ?? '' }}
                             </td>
-                            <td></td>
-                            <td></td>
+                            <td>@php
+                                $recruiter_left =
+                                App\SponsorRecruiter::select('recruiter_left')->where('recruiter_id',$member->userID)->sum('recruiter_left');
+                                // dd($center);
+                                @endphp
+                                {{ $recruiter_left }}
+                            </td>
+                            <td>@php
+                                $recruiter_right =
+                                App\SponsorRecruiter::select('recruiter_right')->where('recruiter_id',$member->userID)->sum('recruiter_right');
+                                // dd($center);
+                                @endphp
+                                {{ $recruiter_right }}</td>
                             <td></td>
                             <td></td>
                         </tr>
