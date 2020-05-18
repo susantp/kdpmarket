@@ -81,7 +81,12 @@
                                 @endphp
                                 {{ $recruiter_right }}</td>
                             <td></td>
-                            <td></td>
+                            <td> @php
+                                $bonus_date =
+                                App\SponsorRecruiter::select('bonus_at')->where('userID',$member->userID)->first();
+                                // dd($bonus_date->bonus_at);
+                                @endphp
+                                {{ $bonus_date['bonus_at'] }}</td>
                         </tr>
 
                         @endforeach

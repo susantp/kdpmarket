@@ -275,11 +275,11 @@
                     id: recruiter_id},
                 success: function (data) {
                     // console.log(data);
-                    if(data.count>=2) {
-                    alert("Limit Reached !");
-                    }else{
+                    // if(data.count>=2) {
+                    // alert("Limit Reached !");
+                    // }else{
                     $('#recruiter_name').val(data.data[0].name);
-                    }
+                    // }
                 }
             });
         });
@@ -293,6 +293,7 @@
         "_token": "{{ csrf_token() }}",
         id: sponsor_id},
         success: function (data) {
+            console.log(data);
         if(data.count>=2) {
         alert("Limit Reached !");
         }else{

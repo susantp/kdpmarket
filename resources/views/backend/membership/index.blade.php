@@ -24,17 +24,17 @@
                             <td>Name</td>
                             <td>Phone</td>
                             <td>Mail</td>
-                            <td>D Name</td>
-                            <td>D Date/Time</td>
-                            <td>V No</td>
-                            <td>Acc Owner</td>
+                            <td>Depositor Name</td>
+                            <td>Deposit Date/Time</td>
+                            <td>Voucher No</td>
+                            <td>Account Owner</td>
                             <td>RRN</td>
                             <td>Bank Name</td>
-                            <td>Acc Number</td>
-                            <td>Rec ID</td>
-                            <td>Rec Name</td>
-                            <td>Spo ID</td>
-                            <td>Spo Name</td>
+                            <td>Account Number</td>
+                            <td>Recruiter ID</td>
+                            <td>Recruiter Name</td>
+                            <td>Sponsor ID</td>
+                            <td>Sponsor Name</td>
                             <td>Center Name</td>
                             <td>Center Phone</td>
                             <td>Action</td>

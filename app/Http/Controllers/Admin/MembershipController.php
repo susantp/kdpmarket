@@ -10,7 +10,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use Carbon\Carbon;
 class MembershipController extends Controller
 {
 
@@ -28,7 +28,7 @@ class MembershipController extends Controller
     {
         // $members = Member::paginate(10);
         $members = Member::all();
-        // dd( $members);
+        
         return view('backend.membership.index', ['members' => $members, 'role' => 'admin']);
     }
 
@@ -83,8 +83,13 @@ class MembershipController extends Controller
         $member->center_qualify = $request->center_qualify;
         $member->password = Hash::make($request->first_password_login);
         $member->second_password_eWallet = Hash::make($request->second_password_eWallet);
+       
         $member->save();
-
+        // if ($current_recruiter->status  == 'no') {
+        //     dd('inside if statement line 90');
+        // }
+        //     dd($current_recruiter);
+        
         if ($member) {
             $recruiter = new SponsorRecruiter();
             $recruiter->member_id = $member->id;
@@ -99,8 +104,23 @@ class MembershipController extends Controller
                 $recruiter->recruiter_right = 1;
                 $recruiter->recruiter_left = 0;
             }
+             // check if the current recruiter has previous recruitment history
+        $current_recruiter = SponsorRecruiter::where('userID',$request->recruiter_id)->first();
+
+        $recruiter_left_count = SponsorRecruiter::select('recruiter_left')->where('recruiter_id',$request->recruiter_id)->sum('recruiter_left');
+        $recruiter_right_count = SponsorRecruiter::select('recruiter_right')->where('recruiter_id',$request->recruiter_id)->sum('recruiter_right');
+        
+        if ($current_recruiter->status == 'no' && $recruiter_left_count >= 5 && $recruiter_right_count >= 5 ) {
+           $now = now();
+        $current_recruiter->status = 'yes';
+        // dd($date);
+        $current_recruiter->bonus_at =  $now;
+        $current_recruiter->save();
+        }
+        else{
             $recruiter->status = 'no';
-            
+        }
+        // die("member controller line 93");
             $recruiter->save();
         } else {
 
@@ -177,7 +197,7 @@ class MembershipController extends Controller
         $member->center_qualify = $request->center_qualify;
         $member->save();
 
-        $recruiter = SponsorRecruiter::where('member_id', $id)->first();;
+        $recruiter = SponsorRecruiter::where('member_id', $id)->first();
         $recruiter->sponsor_id = $member->sponsor_id;
         $recruiter->recruiter_id = $member->recruiter_id;
         if ($request->recruiter_bonus == 'recruiter_left') {
