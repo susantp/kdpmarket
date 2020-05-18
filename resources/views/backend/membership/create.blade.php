@@ -31,14 +31,14 @@
                                 <div class="form-group">
                                     <label for="rID">ID</label>
                                     <input type="text" class="form-control" name="userID" id="userID"
-                                        aria-describedby="rID" placeholder="회원 ID (6자리이상)" value="{{ old('userID') }}">
+                                        aria-describedby="rID" placeholder="회원 ID (6자리이상)" value="{{ old('userID') }}" required>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="rName">Name</label>
                                     <input type="text" class="form-control" name="name" id="name" placeholder="회원이름"
-                                        value="{{ old('name') }}">
+                                        value="{{ old('name') }}" required>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -232,7 +232,7 @@
                                     <label for="firstPasswordLogin">1st Password (Login)</label>
                                     <input type="text" class="form-control" name="first_password_login"
                                         id="first_password_login" aria-describedby="first_password"
-                                        placeholder="1st Password (Login)" value="{{ old('first_password_login') }}">
+                                        placeholder="1st Password (Login)" value="{{ old('first_password_login') }}" required>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -241,7 +241,7 @@
                                     <input type="text" class="form-control" name="second_password_eWallet"
                                         id="second_password_eWallet" aria-describedby="second_password"
                                         placeholder="2nd Password (E-wallet)"
-                                        value="{{ old('second_password_eWallet') }}">
+                                        value="{{ old('second_password_eWallet') }}" required>
                                 </div>
                             </div>
                             <!-- end of row -->
@@ -275,11 +275,11 @@
                     id: recruiter_id},
                 success: function (data) {
                     // console.log(data);
-                    if(data.count>=2) {
-                    alert("Limit Reached !");
-                    }else{
+                    // if(data.count>=2) {
+                    // alert("Limit Reached !");
+                    // }else{
                     $('#recruiter_name').val(data.data[0].name);
-                    }
+                    // }
                 }
             });
         });
@@ -293,6 +293,7 @@
         "_token": "{{ csrf_token() }}",
         id: sponsor_id},
         success: function (data) {
+            console.log(data);
         if(data.count>=2) {
         alert("Limit Reached !");
         }else{

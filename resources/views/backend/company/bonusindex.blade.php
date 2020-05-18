@@ -80,8 +80,26 @@
                                 // dd($center);
                                 @endphp
                                 {{ $recruiter_right }}</td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                @php
+                                $bonus_date =
+                                App\SponsorRecruiter::select('bonus_at')->where('userID',$member->userID)->first();
+                                // dd($bonus_date->bonus_at);
+                                $upline = DB::select('SELECT  userID FROM sponsor_recruiter sr
+WHERE TIMESTAMPDIFF(SECOND,sr.bonus_at,"'.$bonus_date['bonus_at'].'") > 0 ORDER BY sr.bonus_at DESC LIMIT 1 ');
+
+@endphp
+@if (!empty($upline))
+    {{$upline[0]->userID}}
+@endif
+   
+                            </td>
+                            <td> @php
+                                $bonus_date =
+                                App\SponsorRecruiter::select('bonus_at')->where('userID',$member->userID)->first();
+                                // dd($bonus_date->bonus_at);
+                                @endphp
+                                {{ $bonus_date['bonus_at'] }}</td>
                         </tr>
 
                         @endforeach
