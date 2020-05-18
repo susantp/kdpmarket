@@ -1,4 +1,10 @@
+@if ($role == 'admin')
+@extends('layouts.backend.app')
+    
+@else
 @extends('layouts.backend.memberLayout.app')
+    
+@endif
 
 @section('content')
 <div class="container-fluid">
