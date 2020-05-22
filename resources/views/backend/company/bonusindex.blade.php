@@ -187,11 +187,11 @@ WHERE TIMESTAMPDIFF(SECOND,sr.bonus_at,"'.$bonus_date['bonus_at'].'") > 0 ORDER 
         bonusDate: bonusDate
       },
       success: function(data) {
-        console.log(data);
+        // console.log(data);
         $.each(data.result, function(index,value){
             // console.log(result);
-            console.log(index);
-            console.log(value);
+            // console.log(index);
+            // console.log(value);
 
              $('#bonusResultsTable tbody').append("<tr><td>"+(index+1)+"</td><td>"+value.bonus_at+"</td><td>"+value.userID+"</td><td><button type='button' class='btn btn-danger cancelButton'>Cancel</button></td></tr>");
          });
