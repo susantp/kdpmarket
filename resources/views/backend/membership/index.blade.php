@@ -123,7 +123,7 @@
 <script>
     $(document).ready( function () {
     $('.dataTable').DataTable({
-        "scrollY": '50vh',
+        "scrollY": '100vh',
         "scrollX": true,
         'pagingType' : 'simple'
     });

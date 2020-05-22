@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\CompanyInfo;
 use App\Member;
+use App\SponsorRecruiter;
+use Illuminate\Support\Facades\DB;
+
 
 
 
@@ -31,9 +34,22 @@ class CompanyController extends Controller
 
     public function indexBonusList()
     {
-        $members = Member::where('center_qualify','=','yes')->get();
+        $members = Member::all();
         return view('backend.company.bonusindex', ['members' => $members, 'role' => 'admin']);
     }
+
+    public function bonusMemberCalculate(Request $request)
+    {
+        $bonusDate = $request->bonusDate;
+        $bonusMember =  DB::select('SELECT * FROM `sponsor_recruiter` WHERE DATE(bonus_at) = "'.$bonusDate.'"');
+        $data['success'] = true;
+        $data['result'] = $bonusMember;
+        return response()->json($data);
+        dd($bonusMember);
+
+    }
+
+
     public function index()
     {
         $companies = CompanyInfo::with('members')->get();

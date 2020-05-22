@@ -26,6 +26,7 @@ Route::resource('membership', 'Admin\MembershipController');
 Route::get('changeInfo', 'Admin\MembershipController@changeInfo')->name('changeInfo');
 Route::post('checkUserID', 'Admin\MembershipController@checkUserID')->name('checkUserID');
 Route::post('checkRecruiterAjax', 'Admin\MembershipController@checkRecruiterInfo')->name('checkRecruiterInfo');
+Route::post('bonusMemberCalculateAjax', 'Admin\CompanyController@bonusMemberCalculate')->name('bonusMemberCalculate');
 
 Route::get('center', 'Admin\CompanyController@indexQualified')->name('centerList');
 Route::get('bonusList', 'Admin\CompanyController@indexBonusList')->name('bonusList');

@@ -111,13 +111,13 @@ WHERE TIMESTAMPDIFF(SECOND,sr.bonus_at,"'.$bonus_date['bonus_at'].'") > 0 ORDER 
                         <h4>Calculate Date</h4>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control">
+                        <input type="date" class="form-control" id="bonusDateCalculate">
                     </div>
                     <div class="col">
-                        <button class="btn btn-primary">Calculate</button>
+                        <button class="btn btn-primary" id="bonusCalculateButton">Calculate</button>
                     </div>
                 </div>
-                <table class="table table-bordered table-responsive ">
+                <table class="table table-bordered table-responsive " id="bonusResultsTable">
                     <thead>
                         <tr>
                             <td>No</td>
@@ -127,7 +127,7 @@ WHERE TIMESTAMPDIFF(SECOND,sr.bonus_at,"'.$bonus_date['bonus_at'].'") > 0 ORDER 
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        {{-- <tr>
                             <td>1</td>
                             <td>2020-04-10</td>
                             <td>1</td>
@@ -150,7 +150,7 @@ WHERE TIMESTAMPDIFF(SECOND,sr.bonus_at,"'.$bonus_date['bonus_at'].'") > 0 ORDER 
                             <td>Total</td>
                             <td>15</td>
                             <td></td>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-center">
@@ -166,12 +166,44 @@ WHERE TIMESTAMPDIFF(SECOND,sr.bonus_at,"'.$bonus_date['bonus_at'].'") > 0 ORDER 
 </div>
 
 <script>
-    $(document).ready( function () {
-    $('.dataTable').DataTable({
-        "scrollY": '50vh',
-        "scrollX": true,
-        'pagingType' : 'simple'
+    $(document).ready(function() {
+  $(".dataTable").DataTable({
+    scrollY: "100vh",
+    scrollX: true,
+    pagingType: "simple"
+  });
+
+  $("#bonusCalculateButton").click(function(e) {
+    e.preventDefault();
+    $('#bonusResultsTable tbody').html('');
+    var bonusDate = $("#bonusDateCalculate").val();
+    // alert(bonusDate);
+    $.ajax({
+      type: "post",
+      dataType   :'json',
+      url: "{{route('bonusMemberCalculate')}}",
+      data: {
+        _token: "{{ csrf_token() }}",
+        bonusDate: bonusDate
+      },
+      success: function(data) {
+        // console.log(data);
+        $.each(data.result, function(index,value){
+            // console.log(result);
+            // console.log(index);
+            // console.log(value);
+
+             $('#bonusResultsTable tbody').append("<tr><td>"+(index+1)+"</td><td>"+value.bonus_at+"</td><td>"+value.userID+"</td><td><button type='button' class='btn btn-danger cancelButton'>Cancel</button></td></tr>");
+         });
+      }
     });
-    } );
+  });
+
+  $('.cancelButton').on('click',function(e){
+      e.preventDefault();
+      $('#bonusResultsTable tbody').html('');
+  });
+});
+
 </script>
 @endsection
